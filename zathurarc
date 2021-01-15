@@ -4,6 +4,6 @@ set statusbar-v-padding 0
 set page-padding 1
 set selection-clipboard clipboard
 set synctex true
-set synctex-editor-command "nvim --remote-silent +%l %f"
+set synctex-editor-command "nvr --remote +"%line" "%file""
 set highlight-color "#FF00FF"
 set highlight-transparency 0.3

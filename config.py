@@ -197,7 +197,7 @@ screens = [
                                 inactive=Onedark[8],
                     ),
                 #  widget.Prompt(),
-                widget.CurrentLayoutIcon(background=Onedark[0], fontsize=10),
+                widget.CurrentLayoutIcon(background=Onedark[0], fontsize=10, scale=0.7),
                 widget.TextBox(" │ ", foreground=Onedark[8], background=Onedark[0]),
                 widget.WindowName(fontsize=10,background=Onedark[0]),
                 #  widget.Net(background=Onedark[0],interface="enp2s0", format="{down}↓↑{up}", foreground=Onedark[6]),
