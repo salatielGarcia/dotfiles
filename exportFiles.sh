@@ -1,7 +1,8 @@
 #!/bin/bash
 
 cp -v ~/dotfiles/.vimrc ~/
-# cp -v ~/dotfiles/.bashrc ~/
+cp -v ~/dotfiles/.bashrc ~/
+cp -v ~/dotfiles/.inputrc ~/
 cp -v ~/dotfiles/.wxMaxima ~/
 cp -v ~/dotfiles/style.ini ~/
 

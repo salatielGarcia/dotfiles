@@ -97,27 +97,43 @@ keys = [
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
     Key([mod], "e", lazy.spawn("termite -e vifm"), desc="Open file browser"),
-    Key([mod], "d", lazy.spawn("dmenu_run -fn 'Font Awesome Regular 5:pixelsize=13' -nb '#282C34' -sb '#C678DD' "),
-        desc="Spawn a command using a prompt widget"),
+    #  Key([mod], "d", lazy.spawn("dmenu_run -fn 'Font Awesome Regular 5:pixelsize=13' -nb '#282C34' -sb '#C678DD' "),
+    Key([mod], "d", lazy.spawn("termite -t launcher -e /home/salatiel/scripts/lawnchair"), desc="Custom launcher"),
 
 
     # Change the volume if your keyboard has special volume keys.
     Key(
         [], "XF86AudioRaiseVolume",
-        lazy.spawn("amixer -c 0 -q set Master 2+")
+        lazy.spawn("amixer -D pulse sset Master '5%+'")
     ),
     Key(
         [], "XF86AudioLowerVolume",
-        lazy.spawn("amixer -c 0 -q set Master 2-")
+        lazy.spawn("amixer -D pulse sset Master '5%-'")
     ),
     Key(
         [], "XF86AudioMute",
-        lazy.spawn("amixer -c 0 -q set Master toggle")
+        lazy.spawn("amixer -D pulse set Master toggle")
+    ),
+    Key(
+        [], "XF86AudioPlay",
+        lazy.spawn("playerctl play-pause")
+    ),
+    Key(
+        [], "XF86AudioNext",
+        lazy.spawn("playerctl next")
+    ),
+    Key(
+        [], "XF86AudioPrev",
+        lazy.spawn("playerctl previous")
+    ),
+    Key(
+        [], "XF86AudioStop",
+        lazy.spawn("playerctl stop")
     ),
 ]
 
@@ -256,6 +272,7 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'gnuplot'},  # gitk
     {'wmclass': 'gnuplot_qt'},  # gitk
     {'wname': 'branchdialog'},  # gitk
+    {'wname': 'launcher'},  # dmenu delete
     {'wname': 'pinentry'},  # GPG key password entry
     {'wmclass': 'ssh-askpass'},  # ssh-askpass
 ])

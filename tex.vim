@@ -1,4 +1,8 @@
 iabbrev <buffer> etal \textit{et. al.}
+iabbrev <buffer> quad \qquad
+iabbrev <buffer> nonumb \nonumber
+iabbrev <buffer> noindent \noindent
+iabbrev <buffer> text \text{}<Left><Backspace>
 iabbrev <buffer> item \item
 iabbrev <buffer> vth $V_{th}$
 " setlocal guioptions=!vAfcgt
@@ -8,11 +12,15 @@ syntax sync fromstart
 setlocal iskeyword+=:
 setlocal autochdir
 setlocal nosmarttab
+setlocal conceallevel=1
 " let g:Tex_BibtexFlavor = 'biber'
 " let g:Tex_BibtexFlavor = 'bibtex'
 " set noautochdir
-nmap <A-a> <Plug>yankstack_substitute_older_paste
-nmap <A-A> <Plug>yankstack_substitute_newer_paste
+nnoremap <A-a> <Plug>yankstack_substitute_older_paste
+nnoremap <A-A> <Plug>yankstack_substitute_newer_paste
+inoremap <C-z> <Esc>[s1z=`]a
+nnoremap <buffer> <Leader>cl :tabnew ~/.config/nvim/ftplugin/tex.vim<CR>
+nnoremap <buffer> <Leader>cr :so ~/.config/nvim/ftplugin/tex.vim<CR>
 nnoremap <buffer> <F6> :setlocal spell spelllang=
 nnoremap <buffer> <S-F6> :syntax sync fromstart<CR>
 nnoremap <buffer> <silent> <F4> :py3 import hslib as hs; hs.cleanTex()<CR>
@@ -70,6 +78,7 @@ let b:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':"'", '$':'$', 
 " vimtex
 " let g:vimtex_quickfix_method='pplatex'
 " let g:vimtex_quickfix_method='pulp'
+let g:tex_conceal='abdmg'
 let g:vimtex_compiler_method='latexmk'
 let g:vimtex_compiler_latexmk = {
         \ 'backend' : 'jobs',

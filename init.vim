@@ -33,7 +33,7 @@ let g:onedark_terminal_italics=1
 "
 " ultisnips:
 let g:pymode_python = 'python3'
-let g:UltiSnipsSnippetDirectories=['~/snips/']
+let g:UltiSnipsSnippetDirectories=['~/notes/snips/']
 let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -134,11 +134,9 @@ let g:SuperTabCompletionContexts =
 	\ ['s:ContextText', 's:ContextDiscover', 'DictContext']
 "
 " Startify
-let g:startify_bookmarks = [ {'c': '~/AppData/Local/nvim/init.vim'}, 
-			\ {'y':'C:/Users/salatiel/Documents/dmt/yolikan/AtmelStudio/YolikanPCBFirm/YolikanPCBFirm/YolikanPCBFirm/Sketch.cpp'}, 
-			\ {'g':'C:/Users/salatiel/Documents/dmt/genNotes.md'}, 
-			\ {'a':'C:/Users/salatiel/Documents/dmt/yolikan/AtmelStudio/notasAS.md'}, 
-			\ {'p':'C:/Users/salatiel/Documents/dmt/yolikan/AtmelStudio/batchProgramming/parallelProgram.cmd'}]
+let g:startify_bookmarks = [ {'c': '~/.config/nvim/init.vim'}, 
+			\ {'q':'~/.config/qtile/config.py'}, 
+			\ {'b':'~/.bashrc'}]
 let g:startify_lists = [{ 'type': 'files',     'header': ['   MRU']}, { 'type': 'bookmarks', 'header': ['   Bookmarks']}, { 'type': 'commands',  'header': ['   Commands']}]
 let g:webdevicons_enable_startify = 1
 "
@@ -146,7 +144,7 @@ let g:webdevicons_enable_startify = 1
 let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
 let g:fzf_tags_command = 'ctags -R'
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
-" let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
+
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],

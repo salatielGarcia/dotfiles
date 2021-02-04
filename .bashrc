@@ -145,7 +145,7 @@ alias merge="xrdb -merge ~/.Xresources"
 
 # Aliases for software managment
 # pacman or pm
-alias pacman='sudo pacman --color auto'
+alias pacman='sudo pacman --color always'
 alias update='sudo pacman -Syyu'
 
 # yay as aur helper - updates everything
@@ -277,12 +277,14 @@ ex ()
 
 #########################
 # Salatiel García config
+set -o vi
 alias ls='exa -lah'
-alias svim='sudo -E nvim'
+alias vi=nvim
+alias rg='rg --color always --column --heading --ignore-case --include-zero --multiline'
+alias bat='bat --paging never --color always --decorations always'
 # alias nvim='nvim'
-# alias ed='vim `rg --hidden -l "" | fzf --preview="cat {}" --preview-window=right:50%:wrap --layout=reverse --inline-info`'
-alias ed='nvim `fzf --preview="cat {}" --preview-window=right:50%:wrap --layout=reverse --inline-info`'
-alias cf='cd `fd -H -t d . | fzf --preview="cat {}" --preview-window=right:50%:wrap --layout=reverse --inline-info`'
+alias ed='nvim `fzf`'
+alias cf='cd `fd -H -t d . | fzf --preview="bat {}" --preview-window=right:50%:wrap --layout=reverse --inline-info`'
 export EDITOR=nvim
 export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
     nvim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
@@ -292,5 +294,9 @@ export MANPAGER="/bin/sh -c \"unset PAGER;col -b -x | \
     nvim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
     -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
     -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
-export FZF_DEFAULT_COMMAND='rg --files --hidden'
-neofetch
+export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
+# export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --margin=10% --preview='bat --paging never --color always --decorations always {}' --preview-window=right:50%:wrap"
+export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
+export PATH=$PATH:/home/salatiel/scripts/:/home/salatiel/.local/bin/ # Add for nvr revease search in zathura
+# neofetch
+eval "$(starship init bash)"

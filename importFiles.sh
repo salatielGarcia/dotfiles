@@ -2,6 +2,7 @@
 
 # cp -u -v ~/.vimrc ~/dotfiles
 cp -u -v ~/.bashrc ~/dotfiles
+cp -u -v ~/.inputrc ~/dotfiles
 cp -u -v ~/.wxMaxima ~/dotfiles
 cp -u -v ~/style.ini ~/dotfiles
 cp -u -v ~/.config/picom/picom.conf ~/dotfiles
