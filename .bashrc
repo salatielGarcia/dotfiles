@@ -279,12 +279,14 @@ ex ()
 # Salatiel García config
 set -o vi
 alias ls='exa -lah'
+alias ..='cd ..'
 alias vi=nvim
 alias rg='rg --color always --column --heading --ignore-case --include-zero --multiline'
 alias bat='bat --paging never --color always --decorations always'
 # alias nvim='nvim'
 alias ed='nvim `fzf`'
-alias cf='cd `fd -H -t d . | fzf --preview="bat {}" --preview-window=right:50%:wrap --layout=reverse --inline-info`'
+# alias cf='cd `fd -H -t d . | fzf --preview="bat {}" --preview-window=right:50%:wrap --layout=reverse --inline-info`'
+alias cf='cd `fd -t d . | fzf --preview="bat {}" --preview-window=right:50%:wrap --layout=reverse --inline-info`'
 export EDITOR=nvim
 export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
     nvim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
@@ -298,5 +300,7 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
 # export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --margin=10% --preview='bat --paging never --color always --decorations always {}' --preview-window=right:50%:wrap"
 export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
 export PATH=$PATH:/home/salatiel/scripts/:/home/salatiel/.local/bin/ # Add for nvr revease search in zathura
+export PATH=$PATH:/usr/local/MatLab/R2021a/bin/ # Add for nvr revease search in zathura
+export JAVA_HOME=/opt/android-studio/jre/
 # neofetch
 eval "$(starship init bash)"

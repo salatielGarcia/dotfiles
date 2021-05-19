@@ -2,12 +2,11 @@ iabbrev <buffer> etal \textit{et. al.}
 iabbrev <buffer> quad \qquad
 iabbrev <buffer> nonumb \nonumber
 iabbrev <buffer> noindent \noindent
-iabbrev <buffer> text \text{}<Left><Backspace>
 iabbrev <buffer> item \item
 iabbrev <buffer> vth $V_{th}$
 " setlocal guioptions=!vAfcgt
 setlocal indentexpr=
-setlocal spell spelllang=es_mx
+" setlocal spell spelllang=es_mx
 syntax sync fromstart
 setlocal iskeyword+=:
 setlocal autochdir
@@ -16,15 +15,11 @@ setlocal conceallevel=1
 " let g:Tex_BibtexFlavor = 'biber'
 " let g:Tex_BibtexFlavor = 'bibtex'
 " set noautochdir
-nnoremap <A-a> <Plug>yankstack_substitute_older_paste
-nnoremap <A-A> <Plug>yankstack_substitute_newer_paste
 inoremap <C-z> <Esc>[s1z=`]a
 nnoremap <buffer> <Leader>cl :tabnew ~/.config/nvim/ftplugin/tex.vim<CR>
 nnoremap <buffer> <Leader>cr :so ~/.config/nvim/ftplugin/tex.vim<CR>
-nnoremap <buffer> <F6> :setlocal spell spelllang=
 nnoremap <buffer> <S-F6> :syntax sync fromstart<CR>
 nnoremap <buffer> <silent> <F4> :py3 import hslib as hs; hs.cleanTex()<CR>
-nnoremap <buffer> <C-i> ^i./<Esc>hd$A\input{<Esc>pa}
 " section jumping
 noremap <buffer> <silent> ]] :<c-u>call TexJump2Section( v:count1, '' )<CR>
 noremap <buffer> <silent> [[ :<c-u>call TexJump2Section( v:count1, 'b' )<CR>
@@ -96,26 +91,27 @@ let g:vimtex_compiler_latexmk = {
         \   '-interaction=nonstopmode',
         \ ],
         \}
-let g:vimtex_quickfix_latexlog = {
-          \ 'default' : 1,
-          \ 'ignore_filters' : [],
-          \ 'general' : 1,
-          \ 'references' : 0,
-          \ 'overfull' : 1,
-          \ 'underfull' : 0,
-          \ 'font' : 1,
-          \ 'packages' : {
-          \   'default' : 1,
-          \   'general' : 1,
-          \   'babel' : 1,
-          \   'biblatex' : 1,
-          \   'fixltx2e' : 1,
-          \   'hyperref' : 1,
-          \   'natbib' : 1,
-          \   'scrreprt' : 1,
-          \   'titlesec' : 1,
-          \ },
-          \}
+" Deprecated option
+" let g:vimtex_quickfix_latexlog = {
+"           \ 'default' : 1,
+"           \ 'ignore_filters' : [],
+"           \ 'general' : 1,
+"           \ 'references' : 0,
+"           \ 'overfull' : 1,
+"           \ 'underfull' : 0,
+"           \ 'font' : 1,
+"           \ 'packages' : {
+"           \   'default' : 1,
+"           \   'general' : 1,
+"           \   'babel' : 1,
+"           \   'biblatex' : 1,
+"           \   'fixltx2e' : 1,
+"           \   'hyperref' : 1,
+"           \   'natbib' : 1,
+"           \   'scrreprt' : 1,
+"           \   'titlesec' : 1,
+"           \ },
+"           \}
 
 let g:vimtex_complete_enabled=1
 let g:vimtex_imaps_enabled=0
@@ -132,4 +128,5 @@ let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 "     \ . ':call remote_foreground('''.v:servername.''')^<CR^>^<CR^>\""'
 " let b:vimtex_main = 'tesisMain.tex'
 let g:vimtex_quickfix_mode=2
+let g:vimtex_grammar_textidote={'jar': '~/.config/nvim/plugged/vimtex/textidote.jar'}
 " En Sumatra: "C:\Program Files\Vim\vim82\gvim.exe" --remote-silent +%l %f

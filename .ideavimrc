@@ -1,0 +1,69 @@
+set nu
+set rnu
+set ruler
+set hlsearch
+set ignorecase
+set smarttab
+set incsearch
+set showcmd
+set cursorline
+set backspace=2
+set backspace=indent,eol,start
+set complete+=kspell
+set splitright
+set splitbelow
+set wildmenu
+set wildmode=list:full
+set wrap linebreak
+set clipboard^=unnamedplus
+set ideajoin
+set surround
+
+let mapleader='¿'
+let maplocalleader='¿'
+" Change default use of comma to :
+nnoremap , :
+vnoremap , :
+nnoremap : ;
+nnoremap ; ,
+nnoremap ` '
+nnoremap <Esc><Esc> :nohl<CR>
+nnoremap <Leader>tn <Esc>:tabnew 
+
+"make wrapped lines more intuitive
+noremap <silent> k gk
+noremap <silent> j gj
+" noremap <silent> 0 g0
+" noremap <silent> $ g$
+"
+noremap <silent> <Up> gk
+noremap <silent> <Down> gj
+nnoremap <S-Up> 3<C-y>
+nnoremap <S-Down> 3<C-e>
+nmap <C-Up> 3<C-u>
+nmap <C-Down> 3<C-d>
+" nnoremap K <C-y>
+" nnoremap J <C-e>
+"
+" Tabular commands
+" set verbose=2
+" vnoremap <Tab> >gv
+" vnoremap <S-Tab> >gv
+nnoremap < >>
+nnoremap > <<
+
+set surround 
+
+nnoremap <Leader>c<Space> :action CommentByLineComment<CR>
+nnoremap <C-}> :action GotoDeclaration<CR>
+nnoremap 1gt :action GoToTab1<CR>
+nnoremap 2gt :action GoToTab2<CR>
+nnoremap 3gt :action GoToTab3<CR>
+nnoremap 4gt :action GoToTab4<CR>
+nnoremap 5gt :action GoToTab5<CR>
+nnoremap 6gt :action GoToTab6<CR>
+nnoremap 7gt :action GoToTab7<CR>
+nnoremap 8gt :action GoToTab8<CR>
+nnoremap 9gt :action GoToTab9<CR>
+nnoremap <Leader>lv :action Run<CR>
+nnoremap <Leader>ll :action MakeGradleProject<CR>

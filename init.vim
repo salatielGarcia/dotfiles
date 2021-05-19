@@ -1,6 +1,10 @@
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
 call plug#begin('~/.config/nvim/plugged/')
 Plug 'SirVer/ultisnips'
 Plug 'scrooloose/nerdcommenter'
+" Plug 'vim-scripts/DrawIt'
 Plug 'machakann/vim-sandwich'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
@@ -14,12 +18,19 @@ Plug 'junegunn/goyo.vim'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'gcavallanti/vim-noscrollbar'
 Plug 'machakann/vim-highlightedyank'
-Plug 'psliwka/vim-smoothie'
+" Plug 'psliwka/vim-smoothie'
 " Plug 'skywind3000/asyncrun.vim'
 " Plug 'ycm-core/YouCompleteMe'
+" Plug 'neovim/nvim-lspconfig'
 Plug 'ervandew/supertab'
 Plug 'lervag/vimtex'
-Plug 'vifm/vifm.vim'
+" Plug 'vifm/vifm.vim'
+Plug 'jpalardy/vim-slime'
+Plug 'udalov/kotlin-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'puremourning/vimspector'
+" Plug 'daeyun/vim-matlab', { 'do': function('DoRemote') }
+"
 " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 call plug#end()
 " ======================================================================================
@@ -122,8 +133,14 @@ let g:goyo_width=140
 let g:goyo_height=100
 let g:goyo_linenr=4
 "
+" COC
+let g:markdown_fenced_languages = [
+      \ 'vim',
+      \ 'help'
+      \]
 " Supertab
-function DictContext()
+let g:SuperTabDefaultCompletionType = '<C-n>'
+function! DictContext()
   if filereadable(expand('%:p:h') . '/tags')
 	return "\<c-x>\<c-k>"
   endif
@@ -135,19 +152,28 @@ let g:SuperTabCompletionContexts =
 "
 " Startify
 let g:startify_bookmarks = [ {'c': '~/.config/nvim/init.vim'}, 
-			\ {'q':'~/.config/qtile/config.py'}, 
+			\ {'a':'~/.config/awesome/rc.lua'}, 
 			\ {'b':'~/.bashrc'}]
 let g:startify_lists = [{ 'type': 'files',     'header': ['   MRU']}, { 'type': 'bookmarks', 'header': ['   Bookmarks']}, { 'type': 'commands',  'header': ['   Commands']}]
+function! StartifyEntryFormat()
+    return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
+endfunction
 let g:webdevicons_enable_startify = 1
 "
+" make YCM compatible with UltiSnips (using supertab)
+" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+" let g:ycm_global_ycm_extra_conf = '~/scripts/.ycm_extra_conf.py'
+" let g:ycm_confirm_extra_conf = 0
+" let g:ycm_extra_conf_globlist = ['~/scripts/.ycm_extra_conf.py','!~/*']
 " FZF
 let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
 let g:fzf_tags_command = 'ctags -R'
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
-
+"
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
+\ 'bg':      ['bg', 'Normal'],
   \ 'hl':      ['fg', 'Comment'],
   \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
   \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
@@ -178,6 +204,14 @@ let g:floaterm_height=0.8
 let g:floaterm_wintitle=0
 let g:floaterm_autoclose=2
 "
+" Python LSP
+" autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
+"
+" Slime
+let g:slime_target = "neovim"
+"
+" VIM Matlab
+let g:matlab_auto_mappings = 0
 " =============================================================================
 "                                 Basic Config 
 " =============================================================================
@@ -189,7 +223,7 @@ filetype indent on
 set nocompatible
 syntax enable
 set laststatus=2
-set showtabline=1
+set showtabline=2
 set viewoptions=cursor,folds,slash,unix
 set linespace=2
 if (has("nvim"))
@@ -207,7 +241,6 @@ colorscheme onedark
 " hi Comment guifg=#6F7A91
 hi Normal ctermbg=NONE guibg=NONE
 hi Nontext ctermbg=NONE guibg=NONE
-
 " set timeoutlen=0
 " HL Yank
 highlight HighlightedyankRegion guibg=#282c34 guifg=#56b6c2
@@ -219,6 +252,7 @@ set ignorecase
 set tabstop=4
 set softtabstop=-1 shiftwidth=0
 set smarttab
+set expandtab
 set incsearch
 set noswapfile
 set nobackup
@@ -238,9 +272,9 @@ set autoindent
 " System commands
 set autoread 
 set autowrite
-set autochdir
+" set autochdir
 set wildmenu
-set wildmode=list:full
+set wildmode=longest:full
 set wrap linebreak
 " set colorcolumn=80
 set clipboard^=unnamedplus
@@ -389,8 +423,21 @@ nnoremap <F9> :se rnu!<CR>
 nnoremap <F12> :FloatermToggle<CR>
 "
 " Activate spellcheck
-nmap <F6> :setlocal spell spelllang=
-nmap <S-F6> :syntax sync fromstart <CR>
+" nmap <F6> :setlocal spell spelllang=
+" nmap <S-F6> :syntax sync fromstart <CR>
+let g:myLang = 0
+let g:myLangList = ['nospell', 'en_us', 'es_mx']
+function! ToggleSpell()
+  let g:myLang=g:myLang+1
+  if g:myLang>=len(g:myLangList) | let g:myLang=0 | endif
+  if g:myLang==0
+    setlocal nospell
+  else
+    execute "setlocal spell spelllang=".get(g:myLangList, g:myLang)
+  endif
+  echo "spell checking language:" g:myLangList[g:myLang]
+endfunction
+nnoremap <F6> :call ToggleSpell()<CR>
 "
 " Change default use of comma to :
 nnoremap , :
@@ -410,14 +457,19 @@ endif
 "
 let mapleader='¿'
 let maplocalleader='¿'
-nnoremap <Leader>co <Esc>:tabnew /home/salatiel/.vimrc<CR>
+nnoremap <Leader>co <Esc>:tabnew ~/.config/nvim/init.vim<CR>
+nnoremap <Leader>cr <Esc>:so ~/.config/nvim/init.vim<CR>
+nnoremap <Leader>cd <Esc>:lcd %:p:h<CR>
 nnoremap <Leader>do <Esc>:e ++ff=utf-8<CR>
 nnoremap <Esc><Esc> <Esc>:nohl<CR>
 "
 " FZF shortcuts
-nnoremap <Space><Space> <Esc>:Files ~/<CR>
+nnoremap <Space><Space> <Esc>:Files<CR>
+nnoremap <Space>h <Esc>:Files ~/<CR>
 nnoremap <Space>l <Esc>:BLines<CR>
 nnoremap <Space>r <Esc>:Lines<CR>
+nnoremap <Space>nn <Esc>:Files ~/notes<CR>
+" nnoremap <Space>nl <Esc>:Lines ~/notes<CR>
 "
 " move between windows
 noremap <A-Down> <C-W><C-J>
@@ -439,8 +491,8 @@ noremap <silent> <Up> gk
 noremap <silent> <Down> gj
 nnoremap <S-Up> 3<C-y>
 nnoremap <S-Down> 3<C-e>
-nmap <C-Up> <C-u>
-nmap <C-Down> <C-d>
+nmap <C-Up> 3<C-u>
+nmap <C-Down> 3<C-d>
 " nnoremap K <C-y>
 " nnoremap J <C-e>
 "
@@ -453,6 +505,26 @@ nnoremap > <<
 "
 " Terminal mapping
 tnoremap <F12> <C-\><C-n>:FloatermToggle<CR>
+" Set dictionary
+" nnoremap <F6> :setlocal spell spelllang=
+"
+"
+" Vimspector mappings
+nnoremap <Leader>dd <Esc>:call vimspector#Launch()<CR>
+nnoremap <Leader>dk <Esc>:call vimspector#Reset()<CR>
+nnoremap <Leader>db <Esc>:call vimspector#ToggleBreakpoint()<CR>
+
+nnoremap <Leader>dc <Esc>:call vimspector#Continue()<CR>
+nnoremap <Leader>ds <Esc>:call vimspector#Stop()<CR>           
+nnoremap <Leader>dR <Esc>:call vimspector#Restart()<CR>
+nnoremap <Leader>dp <Esc>:call vimspector#Pause()<CR>
+" nnoremap <Leader> <Plug>VimspectorToggleBreakpoint
+" nnoremap <Leader> <Plug>VimspectorToggleConditionalBreakpoint
+" nnoremap <Leader> <Plug>VimspectorAddFunctionBreakpoint
+nnoremap <Leader>drc <Esc>:call vimspector#RunToCursor()<CR>
+nnoremap <Leader>do  <Esc>:call vimspector#StepOver()<CR>
+nnoremap <Leader>di  <Esc>:call vimspector#StepInto()<CR>
+nnoremap <Leader>dO  <Esc>:call vimspector#StepOut()<CR>
 "
 " =============================================================================
 "                                 Autocommands 
@@ -462,6 +534,8 @@ tnoremap <F12> <C-\><C-n>:FloatermToggle<CR>
 " au BufEnter,FileType *.sage set filetype=sage
 au BufReadPost *.sage set filetype=sage
 au BufEnter,BufNew vifmrc set filetype=vim
+au BufEnter,BufNew *.cir set filetype=spice
+au BufEnter,BufNew .spiceinit set filetype=spice
 nnoremap <Leader>S :call TrashFunc()<CR>
 function! TrashFunc()
 	tabnew

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cp -v ~/dotfiles/.vimrc ~/
+cp -v ~/dotfiles/.ideavimrc ~/
 cp -v ~/dotfiles/.bashrc ~/
 cp -v ~/dotfiles/.inputrc ~/
 cp -v ~/dotfiles/.wxMaxima ~/
@@ -14,6 +14,8 @@ mkdir -p ~/.config/qtile/
 mkdir -p ~/.config/termite/
 mkdir -p ~/.config/vifm/
 mkdir -p ~/.config/zathura/
+mkdir -p ~/.config/awesome/
+mkdir -p ~/.config/kitty/
 
 cp -v picom.conf ~/.config/picom/
 cp -v mpv.conf.bak ~/.config/mpv/
@@ -23,5 +25,7 @@ rm -v ~/.config/nvim/ftplugin/init.vim
 cp -v autostart.sh ~/.config/qtile/
 cp -v config.py ~/.config/qtile/
 cp -v config ~/.config/termite/
+cp -v kitty.conf ~/.config/kitty/
+cp -v rc.lua ~/.config/awesome/
 cp -v vifmrc ~/.config/vifm/
 cp -v zathurarc ~/.config/zathura/

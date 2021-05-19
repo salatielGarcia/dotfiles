@@ -104,6 +104,7 @@ keys = [
     Key([mod], "e", lazy.spawn("termite -e vifm"), desc="Open file browser"),
     #  Key([mod], "d", lazy.spawn("dmenu_run -fn 'Font Awesome Regular 5:pixelsize=13' -nb '#282C34' -sb '#C678DD' "),
     Key([mod], "d", lazy.spawn("termite -t launcher -e /home/salatiel/scripts/lawnchair"), desc="Custom launcher"),
+    Key([mod, "shift"], "x", lazy.spawn("i3lock -c 282c3488"), desc="Lock the screen"),
 
 
     # Change the volume if your keyboard has special volume keys.
@@ -222,15 +223,22 @@ screens = [
                 widget.CPUGraph(background=Onedark[0],
                                 border_width=1,
                                 border_color=Onedark[5],
-                                graph_color=Onedark[5]),
+                                graph_color=Onedark[3],
+                                frequency = 1,
+                                core = 0,
+                                type = 'line'),
+                widget.CPU(foreground=Onedark[5], background=Onedark[0]),
                 widget.TextBox(" │ ", foreground=Onedark[8], background=Onedark[0]),
                 widget.TextBox("RAM ", fontsize=10, foreground=Onedark[3], background=Onedark[0]),
+                widget.Memory(fontsize=10, foreground=Onedark[3], background=Onedark[0]),
                 widget.MemoryGraph( background=Onedark[0],
                                     border_width=1,
                                     border_color=Onedark[3],
                                     graph_color=Onedark[3]),
                 widget.TextBox(" │ ", foreground=Onedark[8], background=Onedark[0]),
                 widget.Volume(fmt=" {}", background=Onedark[0], foreground=Onedark[2]),
+                widget.TextBox(" │ ", foreground=Onedark[8], background=Onedark[0]),
+                widget.Systray(background=Onedark[0], padding=10),
                 widget.TextBox(" │ ", foreground=Onedark[8], background=Onedark[0]),
                 widget.Clock(format='%a, %d %B %l:%M%p', background=Onedark[0]),
                 widget.TextBox("  ", foreground=Onedark[8], background=Onedark[0]),
@@ -271,8 +279,11 @@ floating_layout = layout.Floating(float_rules=[
     {'wmclass': 'ngspice'},  # gitk
     {'wmclass': 'gnuplot'},  # gitk
     {'wmclass': 'gnuplot_qt'},  # gitk
+    {'wmclass': 'com.luckydroid.mementofx.MementoApp'},  # gitk
     {'wname': 'branchdialog'},  # gitk
+    {'wname': 'pyqtgraph'},  # gitk
     {'wname': 'launcher'},  # dmenu delete
+    {'wname': 'Password Required - Mozilla Firefox'},  # dmenu delete
     {'wname': 'pinentry'},  # GPG key password entry
     {'wmclass': 'ssh-askpass'},  # ssh-askpass
 ])

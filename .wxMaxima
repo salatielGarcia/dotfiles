@@ -71,13 +71,14 @@ documentclassoptions=fleqn
 HTMLequationFormat=0
 autosubscript=2
 ZoomFactor=1
-lastPath=/home/salatiel/docs/dmt/lib/rectModel/articulos
+lastPath=/home/salatiel/Documents/auto/appOpt
 numpadEnterEvaluates=1
 usepngCairo=1
 maximaEnvironment=<?xml version="1.0" encoding="UTF-8"?>\n<entries>\n  <entry>\n    <value>cat</value>\n    <var>PAGER</var>\n  </entry>\n</entries>\n\n
 suppressYellowMarkerMessages=<?xml version="1.0" encoding="UTF-8"?>\n<markers/>\n\n
 maxClipbrd_BitmapMegabytes=4
 defaultExt=wxmx
+autoSaveMinutes=3
 [Persistent_Options]
 [Persistent_Options/Window]
 [Persistent_Options/Window/TipOfTheDay]
@@ -90,8 +91,8 @@ Iconized=0
 [Persistent_Options/Window/wxMaxima]
 x=8
 y=32
-w=1900
-h=1036
+w=1902
+h=1038
 Maximized=0
 Iconized=0
 [Persistent_Options/Window/Engineering\ format\ setup]
@@ -120,6 +121,27 @@ x=321
 y=461
 w=325
 h=222
+Maximized=0
+Iconized=0
+[Persistent_Options/Window/Differentiate]
+x=317
+y=475
+w=332
+h=156
+Maximized=0
+Iconized=0
+[Persistent_Options/Window/Partial\ fractions]
+x=317
+y=494
+w=332
+h=118
+Maximized=0
+Iconized=0
+[Persistent_Options/Window/Solve]
+x=789
+y=405
+w=343
+h=296
 Maximized=0
 Iconized=0
 [Style]
@@ -476,24 +498,27 @@ underlined=0
 fontsize_float=10
 fontname=Arial
 [AUI]
-perspective=layout2|name=history;caption=History;state=18876414;dir=2;layer=0;row=0;pos=1;prop=100000;bestw=97;besth=103;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=structure;caption=Table of Contents;state=18876414;dir=2;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=224;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=XmlInspector;caption=Raw XML monitor;state=18876414;dir=2;layer=0;row=0;pos=0;prop=100000;bestw=192;besth=108;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=stats;caption=Statistics;state=18876414;dir=4;layer=0;row=0;pos=7;prop=100000;bestw=260;besth=428;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=greek;caption=Greek Letters;state=18876414;dir=4;layer=0;row=0;pos=2;prop=100000;bestw=124;besth=111;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=124;floath=111|name=unicode;caption=Unicode characters;state=18876414;dir=4;layer=0;row=0;pos=5;prop=100000;bestw=322;besth=374;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=124;floath=111|name=log;caption=Debug Messages;state=18876414;dir=4;layer=0;row=0;pos=4;prop=100000;bestw=192;besth=108;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=192;floath=108|name=variables;caption=Variables;state=18876414;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=160;besth=52;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=192;floath=108|name=symbols;caption=Mathematical Symbols;state=2099198;dir=4;layer=0;row=0;pos=1;prop=100000;bestw=149;besth=183;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=149;floath=183|name=math;caption=General Math;state=2099198;dir=4;layer=0;row=0;pos=2;prop=100000;bestw=240;besth=306;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=format;caption=Insert;state=2099198;dir=4;layer=0;row=0;pos=1;prop=100000;bestw=256;besth=170;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=draw;caption=Plot using Draw;state=2099198;dir=4;layer=0;row=0;pos=0;prop=100000;bestw=274;besth=238;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=toolbar;caption=;state=132082;dir=1;layer=0;row=1;pos=0;prop=100000;bestw=1132;besth=38;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=console;caption=;state=16892;dir=5;layer=0;row=2;pos=0;prop=100000;bestw=100;besth=100;minw=100;minh=100;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,2)=100|
+perspective=layout2|name=history;caption=History;state=18876414;dir=2;layer=0;row=0;pos=1;prop=100000;bestw=97;besth=103;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=structure;caption=Table of Contents;state=18876414;dir=2;layer=0;row=0;pos=0;prop=100000;bestw=400;besth=224;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=XmlInspector;caption=Raw XML monitor;state=18876414;dir=2;layer=0;row=0;pos=0;prop=100000;bestw=192;besth=108;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=stats;caption=Statistics;state=18876414;dir=4;layer=0;row=0;pos=7;prop=100000;bestw=260;besth=428;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=greek;caption=Greek Letters;state=18876414;dir=4;layer=0;row=0;pos=2;prop=100000;bestw=124;besth=111;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=124;floath=111|name=unicode;caption=Unicode characters;state=18876414;dir=4;layer=0;row=0;pos=5;prop=100000;bestw=322;besth=374;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=124;floath=111|name=log;caption=Debug messages;state=18876414;dir=4;layer=0;row=0;pos=4;prop=100000;bestw=192;besth=108;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=192;floath=108|name=variables;caption=Variables;state=18876414;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=160;besth=52;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=192;floath=108|name=symbols;caption=Mathematical Symbols;state=2099198;dir=4;layer=0;row=0;pos=1;prop=100000;bestw=149;besth=183;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=149;floath=183|name=math;caption=General Math;state=2099198;dir=4;layer=0;row=0;pos=2;prop=100000;bestw=240;besth=306;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=format;caption=Insert;state=2099198;dir=4;layer=0;row=0;pos=1;prop=100000;bestw=256;besth=170;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=draw;caption=Plot using Draw;state=2099198;dir=4;layer=0;row=0;pos=0;prop=100000;bestw=274;besth=238;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=toolbar;caption=;state=132082;dir=1;layer=0;row=1;pos=0;prop=100000;bestw=1132;besth=38;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=console;caption=;state=16892;dir=5;layer=0;row=2;pos=0;prop=100000;bestw=100;besth=100;minw=100;minh=100;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,2)=100|
 [RecentDocuments]
-unsaved_0=/tmp/untitled_456411_492654.wxmx
-unsaved_1=/tmp/untitled_456411_489708.wxmx
-unsaved_2=/tmp/untitled_456411_489070.wxmx
-unsaved_3=/tmp/untitled_456411_486451.wxmx
-unsaved_4=/tmp/untitled_456411_485483.wxmx
-unsaved_5=/tmp/untitled_456411_475736.wxmx
-unsaved_6=/tmp/untitled_456411_473275.wxmx
-document_0=/home/salatiel/docs/dmt/lib/rectModel/articulos/rc_AC.wxmx
-unsaved_7=/tmp/untitled_456411_470470.wxmx
-unsaved_8=/tmp/untitled_456411_456463.wxmx
-packages_0=$NUMERICALIO
-unsaved_9=/tmp/untitled_402014_402525.wxmx
-document_1=/home/salatiel/docs/dmt/lib/rectModel/articulos/rc_DC.wxmx
-packages_1=draw
-document_2=/home/salatiel/docs/dmt/lib/rectModel/articulos/readData.wxmx
-document_3=/home/salatiel/docs/dmt/lib/rectModel/articulos/modelos.wxmx
+unsaved_0=/tmp/untitled_612138_815353.wxmx
+unsaved_1=/tmp/untitled_612138_618886.wxmx
+unsaved_2=/tmp/untitled_608774_611914.wxmx
+unsaved_3=/tmp/untitled_608774_610596.wxmx
+unsaved_4=/tmp/untitled_608774_608833.wxmx
+unsaved_5=/tmp/untitled_583004_591428.wxmx
+unsaved_6=/tmp/untitled_583004_589862.wxmx
+document_0=/home/salatiel/Documents/auto/appOpt/bananaFunction.wxmx
+unsaved_7=/tmp/untitled_583004_583067.wxmx
+unsaved_8=/tmp/untitled_456411_492654.wxmx
+packages_0=$VECT
+unsaved_9=/tmp/untitled_456411_489708.wxmx
+document_1=/home/salatiel/docs/dmt/lib/rectModel/articulos/rc_AC.wxmx
+packages_1=lbfgs
+document_2=/home/salatiel/docs/dmt/lib/rectModel/articulos/rc_DC.wxmx
+document_3=/home/salatiel/docs/dmt/lib/rectModel/articulos/readData.wxmx
+packages_2=$NUMERICALIO
+packages_3=draw
+document_4=/home/salatiel/docs/dmt/lib/rectModel/articulos/modelos.wxmx
 [Wiz]
 [Wiz/Plot2D]
 format=1
