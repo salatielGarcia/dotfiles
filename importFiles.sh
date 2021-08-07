@@ -2,13 +2,15 @@
 
 # cp -u -v ~/.vimrc ~/dotfiles
 cp -u -v ~/.bashrc ~/dotfiles
+cp -u -v ~/.zshrc ~/dotfiles
 cp -u -v ~/.inputrc ~/dotfiles
 cp -u -v ~/.wxMaxima ~/dotfiles
 cp -u -v ~/style.ini ~/dotfiles
 cp -u -v ~/.ideavimrc ~/dotfiles
 cp -u -v ~/.config/picom/picom.conf ~/dotfiles
 cp -u -v ~/.config/mpv/mpv.conf.bak ~/dotfiles
-cp -u -v ~/.config/nvim/init.vim ~/dotfiles
+cp -u -v ~/.config/nvim/init.lua ~/dotfiles
+cp -u -v ~/.config/nvim/lua/plugins.lua ~/dotfiles
 cp -u -v ~/.config/nvim/ftplugin/* ~/dotfiles
 cp -u -v ~/.config/qtile/autostart.sh ~/dotfiles
 cp -u -v ~/.config/qtile/config.py ~/dotfiles

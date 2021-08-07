@@ -9,6 +9,8 @@ neovim
 termite
 kitty
 texlive-most
+pandoc
+pandoc-crossref
 neofetch
 mpv
 picom

@@ -302,5 +302,6 @@ export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
 export PATH=$PATH:/home/salatiel/scripts/:/home/salatiel/.local/bin/ # Add for nvr revease search in zathura
 export PATH=$PATH:/usr/local/MatLab/R2021a/bin/ # Add for nvr revease search in zathura
 export JAVA_HOME=/opt/android-studio/jre/
+export PATH=$PATH:/home/salatiel/Android/Sdk/platform-tools/
 # neofetch
 eval "$(starship init bash)"

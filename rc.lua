@@ -48,7 +48,7 @@ end
 beautiful.init("/home/salatiel/.config/awesome/themes/default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "termite"
+terminal = "kitty"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -107,22 +107,28 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 --
 -- {{{ Wibar
 -- RAM
-myRam = wibox.widget {
-    data_list = {
-        { 'L1', 100 },
-        { 'L2', 200 },
-    },
-    border_width = 1,
-    colors = {
-        beautiful.fg_normal,
-        beautiful.bg_normal,
-    },
-	forced_height    = 40,
-	forced_width     = 40,
-	display_labels   = false,
-    widget = wibox.widget.piechart
-}
--- local cpu_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
+-- myRam = wibox.widget {
+--     data_list = {
+--         { 'L1', 100 },
+--         { 'L2', 200 },
+--     },
+--     border_width = 1,
+--     colors = {
+--         beautiful.fg_normal,
+--         beautiful.bg_normal,
+--     },
+--     forced_height    = 40,
+--     forced_width     = 40,
+--     display_labels   = false,
+--     widget = wibox.widget.piechart
+-- }
+local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
+myRam = ram_widget({
+    width = 70,
+    step_width = 2,
+    step_spacing = 0,
+    color = '#434c5e'
+})
 -- myRam = ramgraph_widget({
 --     timeout = 1,
 -- })
@@ -606,6 +612,7 @@ awful.rules.rules = {
           "Wpa_gui",
           "veromix",
           "MATLAB R2021a",
+          "ngspice",
           "xtightvncviewer"},
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client

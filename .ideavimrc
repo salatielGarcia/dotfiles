@@ -1,3 +1,7 @@
+set surround 
+set commentary
+set highlightedyank
+
 set nu
 set rnu
 set ruler
@@ -38,8 +42,8 @@ noremap <silent> j gj
 "
 noremap <silent> <Up> gk
 noremap <silent> <Down> gj
-nnoremap <S-Up> 3<C-y>
-nnoremap <S-Down> 3<C-e>
+nnoremap <C-k> 3<C-y>
+nnoremap <C-j> 3<C-e>
 nmap <C-Up> 3<C-u>
 nmap <C-Down> 3<C-d>
 " nnoremap K <C-y>
@@ -52,10 +56,13 @@ nmap <C-Down> 3<C-d>
 nnoremap < >>
 nnoremap > <<
 
-set surround 
+nnoremap n nzz
+nnoremap N Nzz
+
 
 nnoremap <Leader>c<Space> :action CommentByLineComment<CR>
 nnoremap <C-}> :action GotoDeclaration<CR>
+nnoremap <Leader>d :action GotoDeclaration<CR>
 nnoremap 1gt :action GoToTab1<CR>
 nnoremap 2gt :action GoToTab2<CR>
 nnoremap 3gt :action GoToTab3<CR>
