@@ -9,9 +9,9 @@ setlocal indentexpr=
 " setlocal spell spelllang=es_mx
 syntax sync fromstart
 setlocal iskeyword+=:
-setlocal autochdir
-setlocal nosmarttab
-setlocal conceallevel=1
+" setlocal autochdir
+" setlocal nosmarttab
+" setlocal conceallevel=1
 " let g:Tex_BibtexFlavor = 'biber'
 " let g:Tex_BibtexFlavor = 'bibtex'
 " set noautochdir
@@ -46,6 +46,17 @@ endfunction
 " au BufEnter destratShort02.tex let g:Tex_BibtexFlavor = 'bibtex'
 " Autopairs
 let b:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':"'", '$':'$', '<':'>'}
+
+function! CleanTex()
+	!rm *.log
+	!rm *.aux
+	!rm *.fdb_latexmk
+	!rm *.fls
+	!rm *.out
+	!rm *.synctex.gz
+	echo "Removed temp files"
+endfunction
+
 " vim latex
 " let g:Imap_FreezeImap = 1
 " let g:Tex_UsePython = 1
@@ -116,7 +127,12 @@ let g:vimtex_compiler_latexmk = {
 let g:vimtex_complete_enabled=1
 let g:vimtex_imaps_enabled=0
 let g:vimtex_indent_enabled=0
-let g:vimtex_view_method='zathura'
+" let g:vimtex_view_method='zathura'
+
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
+
 let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 " let g:vimtex_view_general_options
 "     \ = '-reuse-instance -forward-search @tex @line @pdf'

@@ -120,7 +120,7 @@ kitty + complete setup zsh | source /dev/stdin
 alias ls='exa -lh'
 alias ..='cd ..'
 alias vi=nvim
-alias pacman='sudo pacman'
+alias pacman='sudo pacman --color always --needed'
 alias rg='rg --color always --column --heading --ignore-case --include-zero --multiline'
 alias bat='bat --paging never --color always --decorations always'
 # alias nvim='nvim'
@@ -147,3 +147,5 @@ export PATH=$PATH:/home/salatiel/Android/Sdk/platform-tools/
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 alias luamake=/home/salatiel/.cache/nvim/nlua/sumneko_lua/lua-language-server/3rd/luamake/luamake
+
+eval "$(starship init zsh)"

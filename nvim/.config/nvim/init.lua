@@ -1,35 +1,37 @@
+--[[
+			(_) _ _  (_)| |_    | |
+			| || ' \ | ||  _| _ | || || |/ _` |
+			|_||_||_||_|\___|(_)|_| \_,_|\__,_|
+										            By: Salatiel García
+--]]
+-----------------------------------------------------------------------
+-------------                  HELPERS                    -------------
+-----------------------------------------------------------------------
 
---
-initLua = '~/.config/nvim/init.lua'
-plugs = '~/.config/nvim/lua/plugins.lua'
---
--------------------- HELPERS -------------------------------
+local initLua = '~/.config/nvim/init.lua'
+local plugs = '~/.config/nvim/lua/plugins.lua'
 local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
 local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 local g = vim.g      -- a table to access global variables
 local opt = vim.opt  -- to set options
-local highlight = vim.api.nvim_set_hl
+-- local highlight = vim.api.nvim_set_hl
 g.mapleader = '¿'
 g.maplocalleader = '¿'
-
+--
 local function map(mode, lhs, rhs, opts)
   local options = {noremap = true}
   if opts then options = vim.tbl_extend('force', options, opts) end
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
+-----------------------------------------------------------------------
+-------------                  PLUGINS                    -------------
+-----------------------------------------------------------------------
 
 require('plugins')
 require('nvim-autopairs').setup()
-require('commented').setup()
 g.onedark_transparent_background = 1
 require('onedark').setup()
-
-cmd [[ 
-hi Comment guifg=#6F7A91
-hi Normal ctermbg=NONE guibg=NONE
-hi Nontext ctermbg=NONE guibg=NONE
-]]
-
+--
 local compe = require'compe'.setup {
 	enabled = true;
 	autocomplete = true;
@@ -51,7 +53,7 @@ local compe = require'compe'.setup {
 	max_height = math.floor(vim.o.lines * 0.3),
 	min_height = 1,
 	};
-
+--
 	source = {
 		path = true;
 		buffer = true;
@@ -63,97 +65,38 @@ local compe = require'compe'.setup {
 		luasnip = false;
 	};
 }
-
-local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
-local check_back_space = function()
-    local col = vim.fn.col('.') - 1
-    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
-end
-
--- Use (s-)tab to:
---- move to prev/next item in completion menuone
---- jump to prev/next snippet's placeholder
--- _G.tab_complete = function()
-  -- if vim.fn.pumvisible() == 1 then
-    -- return t "<C-n>"
-  -- elseif vim.fn['vsnip#available'](1) == 1 then
-    -- return t "<Plug>(vsnip-expand-or-jump)"
-  -- elseif check_back_space() then
-    -- return t "<Tab>"
-  -- else
-    -- return vim.fn['compe#complete']()
-  -- end
--- end
--- _G.s_tab_complete = function()
-  -- if vim.fn.pumvisible() == 1 then
-    -- return t "<C-p>"
-  -- elseif vim.fn['vsnip#jumpable'](-1) == 1 then
-    -- return t "<Plug>(vsnip-jump-prev)"
-  -- else
-    -- -- If <S-Tab> is not working in your terminal, change it to <C-h>
-    -- return t "<S-Tab>"
-  -- end
--- end
---
-
-_G.tab_completion = function()
-  if vim.fn.pumvisible() == 1 then
-    return vim.api.nvim_replace_termcodes("<C-n>", true, true, true)
-
-  elseif vim.fn["UltiSnips#CanExpandSnippet"]() == 1 or vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-    return vim.api.nvim_replace_termcodes("<C-R>=UltiSnips#ExpandSnippetOrJump()<CR>", true, true, true)
-
-  elseif is_prior_char_whitespace() then
-    return vim.api.nvim_replace_termcodes("<Tab>", true, true, true)
-
-  else
-    return vim.fn['compe#complete']()
-  end
-end
-_G.shift_tab_completion = function()
-  if vim.fn.pumvisible() == 1 then
-    return vim.api.nvim_replace_termcodes("<C-p>", true, true, true)
-
-  elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-    return vim.api.nvim_replace_termcodes("<C-R>=UltiSnips#JumpBackwards()<CR>", true, true, true)
-
-  else
-    return vim.api.nvim_replace_termcodes("<S-Tab>", true, true, true)
-  end
-end
-map("i", "<Tab>", "v:lua.tab_completion()", {expr = true})
-map("s", "<Tab>", "v:lua.tab_completion()", {expr = true})
-map("i", "<S-Tab>", "v:lua.shift_tab_completion()", {expr = true})
-map("s", "<S-Tab>", "v:lua.shift_tab_completion()", {expr = true})
-map("i", "<CR>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true })
-map('i', '<C-e>', "compe#close('<End>')", {expr=true})
-
+-- Ultisnips
 g.pymode_python = 'python3'
-g.UltiSnipsSnippetDirectories = {'~/notes/snips/'}
+g.UltiSnipsSnippetDirectories = {'~/Documents/notes/snips/'}
 g.UltiSnipsUsePythonVersion = 3
-g.UltiSnipsExpandTrigger="<tab>"
+g.UltiSnipsExpandTrigger="<C-s>"
 g.UltiSnipsJumpForwardTrigger="<C-j>"
 g.UltiSnipsJumpBackwardTrigger="<C-p>"
 g.UltiSnipsEditSplit = 'tabdo'
-
-local nvim_lsp = require('lspconfig')
+--
+-- nedCommenter
+g.NERDSpaceDelims = 1
+g.NERDCompactSexyComs = 1
+g.NERDDefaultAlign = 'left'
+g.NERDCommentEmptyLines = 0
+g.NERDTrimTrailingWhitespace = 1
+--
+-- LSP
+require('lspconfig')
 require('lspinstall')
-
+--
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
 	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 	local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
+--
 	--Enable completion triggered by <c-x><c-o>
 	buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
+--
 	-- Mappings.
 	local opts = { noremap=true, silent=true }
-
+--
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 	buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
@@ -172,23 +115,8 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 	buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 	buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-
 end
--- Your custom attach function for nvim-lspconfig goes here.
--- local custom_nvim_lspconfig_attach = function(...) end
-
--- -- To get builtin LSP running, do something like:
--- -- NOTE: This replaces the calls where you would have before done `require('nvim_lsp').sumneko_lua.setup()`
--- require('nlua.lsp.nvim').setup(require('lspconfig'), {
-  -- on_attach = custom_nvim_lspconfig_attach,
-
-  -- -- Include globals you want to tell the LSP are real :)
-  -- globals = {
-    -- -- Colorbuddy
-    -- "Color", "c", "Group", "g", "s",
-  -- }
--- })
-
+--
 require'lspconfig'.sumneko_lua.setup{
 	-- cmd = {'~/lua-language-server/bin/Linux/lua-language-server -E ~/lua-language-server/main.lua'},
 	cmd = {'sLuaLaunch'},
@@ -235,7 +163,7 @@ require'lspconfig'.sumneko_lua.setup{
 --   }
 -- end
 require'lspconfig'.pyright.setup{}
-
+--
 local actions = require('telescope.actions')
 require('telescope').setup{
 	defaults = {
@@ -276,7 +204,6 @@ require('telescope').setup{
 		file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
 		grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
 		qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
-
 		-- Developer configurations: Not meant for general override
 		buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker,
 		mappings = {
@@ -284,14 +211,11 @@ require('telescope').setup{
 				-- To disable a keymap, put [map] = false
 				-- So, to not map "<C-n>", just put
 				["<C-n>"] = false,
-
 				["<esc>"] = actions.close,
 				-- Otherwise, just set the mapping to the function that you want it to be.
 				["<C-i>"] = actions.select_horizontal,
-
 				-- Add up multiple actions
 				["<cr>"] = actions.select_default + actions.center,
-
 				-- -- You can perform as many actions in a row as you like
 				-- ["<cr>"] = actions.select_default + actions.center + my_cool_custom_action,
 			},
@@ -301,7 +225,7 @@ require('telescope').setup{
 		}
 	}
 }
-
+--
 require'lualine'.setup {
   options = {
     icons_enabled = true,
@@ -330,8 +254,14 @@ require'lualine'.setup {
   tabline = {},
   extensions = {}
 }
+--
+require'lspconfig'.texlab.setup{}
+require'surround'.setup{}
+--------------------------------------------------------
+--------             BASIC CONFIG               --------
+--------------------------------------------------------
 
-
+-- cmd "hi Comment guifg=#6F7A91"
 opt.path = opt.path + '**'
 opt.number = true
 opt.relativenumber = true
@@ -343,7 +273,7 @@ opt.softtabstop = -1
 opt.shiftwidth = 0
 opt.swapfile = false
 opt.backup = false
-opt.undodir = '~/.config/nvim/undodir/'
+opt.undodir = '/home/salatiel/.config/nvim/undodir/'
 opt.undofile = true
 opt.cursorline = true
 opt.clipboard = 'unnamedplus'
@@ -355,48 +285,102 @@ opt.autowrite = true
 -- opt.autochdir = true
 -- opt.wildmode = 'longest:full'
 opt.completeopt = "menuone,noselect"
-
-
+--
+-- Remember previous position
 if fn.has('autocmd') then
 	cmd([[ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]])
 end
+-- Change comments color
+local ns = vim.api.nvim_create_namespace('')
+vim.api.nvim__set_hl_ns(ns)
+vim.api.nvim_set_hl(ns, 'Comment', {fg = '#6F7A91'})
+------------------------------------------------------------------------
+-------------                  MAPPINGS                    -------------
+------------------------------------------------------------------------
 
 map('n', '<F1>', ':tab h ', {noremap = true})
 map('n', '<F9>', ':set rnu!<CR>', {noremap = true})
-
+--
 map('n', ',', ':', {noremap = true})
 map('v', ',', ':', {noremap = true})
 map('n', ':', ';', {noremap = true})
 map('n', ';', ',', {noremap = true})
 map('n', '<Esc><Esc>', ':nohl<CR>', {noremap = true})
-
+--
 map('n', '<Leader>co', '<Esc>:tabnew ' .. initLua .. '<CR>', {noremap = true})
 map('n', '<Leader>cr', '<Esc>:so ' .. initLua .. '<CR>', {noremap = true})
 map('n', '<Leader>po', '<Esc>:tabnew ' .. plugs .. '<CR>', {noremap = true})
 map('n', '<Leader>cd', '<Esc>:lcd %:p:h <CR>', {noremap = true})
-
-
+--
 -- " move between windows
-map('n', '<C-A-j>', '<C-W><C-J>', {noremap = true})
-map('n', '<C-A-k>', '<C-W><C-K>', {noremap = true})
-map('n', '<C-A-l>', '<C-W><C-L>', {noremap = true})
-map('n', '<C-A-h>', '<C-W><C-H>', {noremap = true})
-
-
+map('n', '<Leader>j', '<C-W><C-J>', {noremap = true})
+map('n', '<Leader>k', '<C-W><C-K>', {noremap = true})
+map('n', '<Leader>l', '<C-W><C-L>', {noremap = true})
+map('n', '<Leader>h', '<C-W><C-H>', {noremap = true})
+--
 map('n', '<Leader>ta', '<Esc>:tabnew **/*', {noremap = true})
 map('n', '<Leader>tn', '<Esc>:tabnew ', {noremap = true})
-
+--
 map('n', '<Leader>k', 'gk', {noremap = true, silent=true})
 map('n', '<Leader>j', 'gj', {noremap = true, silent=true})
-
-
+--
 map('n', '<C-k>', '3<C-y>', {noremap = true})
 map('n', '<C-j>', '3<C-e>', {noremap = true})
-
-
+--
 map('n', '<', '>>', {noremap = true})
 map('n', '>', '<<', {noremap = true})
-
+map('n', 'Y', 'y$', {noremap=true})
+--
 map('n', '<Space><Space>', ":lua require'telescope.builtin'.find_files()<CR>", {noremap=true})
-
 --map('t', '<F12>', '<C-\><C-n>:', {noremap = true})
+-- Text Centering
+map('n', '{', '{zzzv', {noremap=true})
+map('n', '}', '}zzzv', {noremap=true})
+map('n', 'n', 'nzzzv', {noremap=true})
+map('n', 'N', 'Nzzzv', {noremap=true})
+map('n', 'J', 'mzJ`z', {noremap=true})
+--
+-- Break undo
+map('i', ',', ',<C-g>u', {noremap=true})
+map('i', '.', '.<C-g>u', {noremap=true})
+map('i', '!', '!<C-g>u', {noremap=true})
+map('i', '?', '?<C-g>u', {noremap=true})
+--
+local is_prior_char_whitespace = function()
+	local col = vim.fn.col('.') - 1
+	if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+		return true
+	else
+		return false
+	end
+end
+--
+_G.tab_completion = function()
+	if vim.fn.pumvisible() == 1 and vim.fn["UltiSnips#CanJumpForwards"]() == 0  then
+		return vim.api.nvim_replace_termcodes("<C-n>", true, true, true)
+	elseif vim.fn["UltiSnips#CanExpandSnippet"]() == 1 or vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+		return vim.api.nvim_replace_termcodes("<C-R>=UltiSnips#ExpandSnippetOrJump()<CR>", true, true, true)
+	elseif is_prior_char_whitespace() then
+		return vim.api.nvim_replace_termcodes("<Tab>", true, true, true)
+	else
+		return vim.fn['compe#complete']()
+	end
+end
+--
+_G.shift_tab_completion = function()
+	if vim.fn.pumvisible() == 1 then
+		return vim.api.nvim_replace_termcodes("<C-p>", true, true, true)
+	elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+		return vim.api.nvim_replace_termcodes("<C-R>=UltiSnips#JumpBackwards()<CR>", true, true, true)
+	else
+		return vim.api.nvim_replace_termcodes("<S-Tab>", true, true, true)
+	end
+end
+--
+map("i", "<Tab>", "v:lua.tab_completion()", {expr = true})
+map("s", "<Tab>", "v:lua.tab_completion()", {expr = true})
+map("i", "<S-Tab>", "v:lua.shift_tab_completion()", {expr = true})
+map("s", "<S-Tab>", "v:lua.shift_tab_completion()", {expr = true})
+map("i", "<CR>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true })
+map('i', '<C-e>', "compe#close('<End>')", {expr=true})
+-- EOF
