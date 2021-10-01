@@ -9,6 +9,7 @@ setlocal indentexpr=
 " setlocal spell spelllang=es_mx
 syntax sync fromstart
 setlocal iskeyword+=:
+command! -nargs=1 -complete=file PdfShrink :!pdfShrink %:t:r.pdf <args>
 " setlocal autochdir
 " setlocal nosmarttab
 " setlocal conceallevel=1
@@ -16,8 +17,8 @@ setlocal iskeyword+=:
 " let g:Tex_BibtexFlavor = 'bibtex'
 " set noautochdir
 inoremap <C-z> <Esc>[s1z=`]a
-nnoremap <buffer> <Leader>cl :tabnew ~/.config/nvim/ftplugin/tex.vim<CR>
-nnoremap <buffer> <Leader>cr :so ~/.config/nvim/ftplugin/tex.vim<CR>
+nnoremap <buffer> <Leader>lo :tabnew ~/.config/nvim/ftplugin/tex.vim<CR>
+nnoremap <buffer> <Leader>lr :so ~/.config/nvim/ftplugin/tex.vim<CR>
 nnoremap <buffer> <S-F6> :syntax sync fromstart<CR>
 nnoremap <buffer> <silent> <F4> :py3 import hslib as hs; hs.cleanTex()<CR>
 " section jumping
@@ -102,6 +103,17 @@ let g:vimtex_compiler_latexmk = {
         \   '-interaction=nonstopmode',
         \ ],
         \}
+
+let g:vimtex_compiler_latexmk_engines = {
+	\ '_'                : '-pdf',
+	\ 'pdflatex'         : '-pdf',
+	\ 'dvipdfex'         : '-pdfdvi',
+	\ 'lualatex'         : '-lualatex',
+	\ 'xelatex'          : '-xelatex',
+	\ 'context (pdftex)' : '-pdf -pdflatex=texexec',
+	\ 'context (luatex)' : '-pdf -pdflatex=context',
+	\ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
+	\}
 " Deprecated option
 " let g:vimtex_quickfix_latexlog = {
 "           \ 'default' : 1,

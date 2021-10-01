@@ -5,22 +5,11 @@ Plug 'machakann/vim-sandwich'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
-Plug 'voldikss/vim-floaterm'
 Plug 'joshdick/onedark.vim'
-Plug 'ryanoasis/vim-devicons'
-Plug 'ojroques/vim-scrollstatus'
 Plug 'mhinz/vim-startify'
 Plug 'junegunn/goyo.vim'
 Plug 'maxbrunsfeld/vim-yankstack'
-Plug 'gcavallanti/vim-noscrollbar'
 Plug 'machakann/vim-highlightedyank'
-Plug 'psliwka/vim-smoothie'
-Plug 'skywind3000/asyncrun.vim'
-Plug 'ycm-core/YouCompleteMe'
-Plug 'ervandew/supertab'
-Plug 'lervag/vimtex'
-Plug 'vifm/vifm.vim'
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 call plug#end()
 " ======================================================================================
 "                                 Plugins Configuration 
@@ -33,7 +22,7 @@ let g:onedark_terminal_italics=1
 "
 " ultisnips:
 let g:pymode_python = 'python3'
-let g:UltiSnipsSnippetDirectories=['~/snips/snips/']
+let g:UltiSnipsSnippetDirectories=['~/Documents/notes/snips']
 let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -49,21 +38,7 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = 0
 let g:NERDTrimTrailingWhitespace = 1
 "
-"NERDTree
-let g:NERDTreeWinSize = 29
-let g:NERDTreeShowLineNumbers=1
-let g:NERDTreeRemoveFileCmd='del '
-"
-" Vim devicons
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['sp'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['tex'] = ''
-let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['rst'] = ''
-"
 " lightline
-function! Noscrollbar()
-	return noscrollbar#statusline(15,'░','█',['▐'],['▌'])
-endfunction
 function! Apath()
 	return fnamemodify(getcwd(), ":~")
 	" return getcwd()
@@ -74,9 +49,6 @@ endfunction
 let g:lightline = {
 	\ 'colorscheme': 'onedark',
 	\ 'component_function': {
-        \   'filetype': 'MyFiletype',
-        \   'fileformat': 'MyFileformat',
-		 \ 'percent': 'Noscrollbar',
 		 \ 'absolutepath': 'Apath',
 		 \ 'close': 'CloseSymbol',
 	  \ }
@@ -106,12 +78,6 @@ function! MyFiletype()
  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
 endfunction
 "
-function! MyFileformat()
- return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
-endfunction
-"
-" vimtex
-let g:tex_flavor = 'latex'
 " autopairs
 " let g:AutoPairsFlyMode = 1
 let g:AutoPairsShortcutBackInsert = '<M-b>'
@@ -140,7 +106,6 @@ let g:startify_bookmarks = [ {'c': '~/AppData/Local/nvim/init.vim'},
 			\ {'a':'C:/Users/salatiel/Documents/dmt/yolikan/AtmelStudio/notasAS.md'}, 
 			\ {'p':'C:/Users/salatiel/Documents/dmt/yolikan/AtmelStudio/batchProgramming/parallelProgram.cmd'}]
 let g:startify_lists = [{ 'type': 'files',     'header': ['   MRU']}, { 'type': 'bookmarks', 'header': ['   Bookmarks']}, { 'type': 'commands',  'header': ['   Commands']}]
-let g:webdevicons_enable_startify = 1
 "
 " FZF
 let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
@@ -166,19 +131,6 @@ let g:fzf_colors =
 let g:yankstack_map_keys = 0
 nmap <A-a> <Plug>yankstack_substitute_older_paste
 nmap <A-A> <Plug>yankstack_substitute_newer_paste
-"
-" Float-term
-let g:floaterm_wintype='floating'
-let g:floaterm_keymap_toggle = '<F12>'
-let g:floaterm_keymap_next   = '<F11>'
-let g:floaterm_keymap_prev   = '<F10>'
-let g:floaterm_keymap_new    = '<F8>'
-let g:floaterm_gitcommit='floaterm'
-let g:floaterm_autoinsert=1
-let g:floaterm_width=0.8
-let g:floaterm_height=0.8
-let g:floaterm_wintitle=0
-let g:floaterm_autoclose=2
 "
 " =============================================================================
 "                                 Basic Config 
@@ -240,7 +192,7 @@ set wildmenu
 set wildmode=list:full
 set wrap linebreak
 " set colorcolumn=80
-set clipboard^=unnamedplus
+set clipboard=unnamed
 " set sessionoptions="buffers,curdir,folds,localoptions,options,slash,tabpages,terminal"
 " set encoding=utf-8
 " set fileencoding=utf-8

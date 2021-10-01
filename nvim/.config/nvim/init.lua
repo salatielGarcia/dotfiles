@@ -226,6 +226,33 @@ require('telescope').setup{
 	}
 }
 --
+-- asd = tostring(cmd("set spell spelllang?"))
+-- ooo = string.sub(asd, 2, -1)
+-- print("ooo es " .. tostring(string.len(asd)))
+-- print(type(asd))
+-- Spelling
+local spellChoice = "nil"
+_G.ChangeSpell = function()
+	if spellChoice == "nil" then
+		cmd "silent setlocal spell spelllang=es_mx"
+		spellChoice = "es"
+	elseif spellChoice == "es"	then
+		cmd "silent setlocal spell spelllang=en_us"
+		spellChoice = "en"
+	elseif spellChoice == "en"	then
+		cmd "silent setlocal nospell"
+		spellChoice = "nil"
+	end
+end
+map("n", "<F6>", ":silent call v:lua.ChangeSpell()<CR>", {expr = false, noremap=true})
+local function SpellStatus()
+	-- local spellString = cmd "silent set spell spelllang?"
+	-- return type(string.sub(spellString, 3, -1))
+	return "spell " .. spellChoice
+end
+local function Apath()
+	return fn.fnamemodify(fn.getcwd(), ':~')
+end
 require'lualine'.setup {
   options = {
     icons_enabled = true,
@@ -235,9 +262,9 @@ require'lualine'.setup {
     disabled_filetypes = {}
   },
   sections = {
-    lualine_a = {'mode'},
+    lualine_a = {'mode', SpellStatus},
     lualine_b = {'branch'},
-    lualine_c = {'filename'},
+    lualine_c = {Apath},
     lualine_x = {'encoding', 'fileformat', {'filetype', colored = true}},
     -- lualine_x = {},
     lualine_y = {'progress'},
@@ -271,6 +298,7 @@ opt.ignorecase = true
 opt.tabstop = 4
 opt.softtabstop = -1
 opt.shiftwidth = 0
+opt.linebreak = true
 opt.swapfile = false
 opt.backup = false
 opt.undodir = '/home/salatiel/.config/nvim/undodir/'
@@ -356,10 +384,10 @@ local is_prior_char_whitespace = function()
 end
 --
 _G.tab_completion = function()
-	if vim.fn.pumvisible() == 1 and vim.fn["UltiSnips#CanJumpForwards"]() == 0  then
-		return vim.api.nvim_replace_termcodes("<C-n>", true, true, true)
-	elseif vim.fn["UltiSnips#CanExpandSnippet"]() == 1 or vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+	if vim.fn["UltiSnips#CanExpandSnippet"]() == 1 or vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
 		return vim.api.nvim_replace_termcodes("<C-R>=UltiSnips#ExpandSnippetOrJump()<CR>", true, true, true)
+	elseif vim.fn.pumvisible() == 1 and vim.fn["UltiSnips#CanJumpForwards"]() == 0  then
+		return vim.api.nvim_replace_termcodes("<C-n>", true, true, true)
 	elseif is_prior_char_whitespace() then
 		return vim.api.nvim_replace_termcodes("<Tab>", true, true, true)
 	else
@@ -379,8 +407,10 @@ end
 --
 map("i", "<Tab>", "v:lua.tab_completion()", {expr = true})
 map("s", "<Tab>", "v:lua.tab_completion()", {expr = true})
+map("v", "<Tab>", "v:lua.tab_completion()", {expr = true})
 map("i", "<S-Tab>", "v:lua.shift_tab_completion()", {expr = true})
 map("s", "<S-Tab>", "v:lua.shift_tab_completion()", {expr = true})
+map("v", "<S-Tab>", "v:lua.shift_tab_completion()", {expr = true})
 map("i", "<CR>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { expr = true })
 map('i', '<C-e>', "compe#close('<End>')", {expr=true})
 -- EOF

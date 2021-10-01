@@ -1,8 +1,12 @@
 setlocal conceallevel=3
 nnoremap <Leader>pdx <Esc>:!pandoc %:t:r.html -o %:t:r.docx<CR>
+nnoremap <Leader>pdf <Esc>:!pandoc -N % -o %:t:r.pdf<CR>
 nnoremap <Leader>pdh <Esc>:!pandoc % --number-sections -s -c --bibliography=%:t:r.bib -o %:t:r.html -f markdown --filter pandoc-crossref -M figureTitle="Figura" -M tableTitle="Tabla" -M figPrefix="Fig." -M tblPrefix="Tabla"<CR>
+nnoremap <Leader>po <Esc>:tabnew ~/.config/nvim/ftplugin/markdown.vim<CR>
+nnoremap <Leader>pr <Esc>:source ~/.config/nvim/ftplugin/markdown.vim<CR>
 iabbrev stimes ×
 
+inoremap <C-z> <Esc>[s1z=`]a
 let b:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '$':'$', '`':'`'}
 
 highlight markdownH1 guifg=#61AFEF

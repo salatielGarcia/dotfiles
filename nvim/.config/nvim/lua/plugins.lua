@@ -12,6 +12,7 @@ return require('packer').startup(function(use)
 	-- use {'joshdick/onedark.vim'}
 	use{'scrooloose/nerdcommenter'}
 	use {'SirVer/ultisnips'}
+	use{'machakann/vim-sandwich'}
 	use {'navarasu/onedark.nvim'}
 	use {'neovim/nvim-lspconfig'}
 	use {'kabouzeid/nvim-lspinstall'}
