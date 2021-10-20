@@ -85,6 +85,7 @@ endfunction
 " vimtex
 " let g:vimtex_quickfix_method='pplatex'
 " let g:vimtex_quickfix_method='pulp'
+let g:vimtex_compiler_progname = 'nvr'
 let g:tex_conceal='abdmg'
 let g:vimtex_compiler_method='latexmk'
 let g:vimtex_compiler_latexmk = {
@@ -104,16 +105,16 @@ let g:vimtex_compiler_latexmk = {
         \ ],
         \}
 
-let g:vimtex_compiler_latexmk_engines = {
-	\ '_'                : '-pdf',
-	\ 'pdflatex'         : '-pdf',
-	\ 'dvipdfex'         : '-pdfdvi',
-	\ 'lualatex'         : '-lualatex',
-	\ 'xelatex'          : '-xelatex',
-	\ 'context (pdftex)' : '-pdf -pdflatex=texexec',
-	\ 'context (luatex)' : '-pdf -pdflatex=context',
-	\ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
-	\}
+" let g:vimtex_compiler_latexmk_engines = {
+"     \ '_'                : '-pdf',
+"     \ 'pdflatex'         : '-pdf',
+"     \ 'dvipdfex'         : '-pdfdvi',
+"     \ 'lualatex'         : '-lualatex',
+"     \ 'xelatex'          : '-xelatex',
+"     \ 'context (pdftex)' : '-pdf -pdflatex=texexec',
+"     \ 'context (luatex)' : '-pdf -pdflatex=context',
+"     \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
+"     \}
 " Deprecated option
 " let g:vimtex_quickfix_latexlog = {
 "           \ 'default' : 1,
@@ -158,3 +159,6 @@ let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 let g:vimtex_quickfix_mode=2
 let g:vimtex_grammar_textidote={'jar': '~/.config/nvim/plugged/vimtex/textidote.jar'}
 " En Sumatra: "C:\Program Files\Vim\vim82\gvim.exe" --remote-silent +%l %f
+" En arch se debe instalar nvr como pip3 install --user --upgrade
+" neovim-remote y agregar nvr --remote-silent +%l %f en las opciones de editor
+" de okular

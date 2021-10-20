@@ -8,7 +8,7 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
-	use {'windwp/nvim-autopairs'}
+	use {'jiangmiao/auto-pairs'}
 	-- use {'joshdick/onedark.vim'}
 	use{'scrooloose/nerdcommenter'}
 	use {'SirVer/ultisnips'}

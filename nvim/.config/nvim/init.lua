@@ -28,7 +28,6 @@ end
 -----------------------------------------------------------------------
 
 require('plugins')
-require('nvim-autopairs').setup()
 g.onedark_transparent_background = 1
 require('onedark').setup()
 --
@@ -73,7 +72,10 @@ g.UltiSnipsExpandTrigger="<C-s>"
 g.UltiSnipsJumpForwardTrigger="<C-j>"
 g.UltiSnipsJumpBackwardTrigger="<C-p>"
 g.UltiSnipsEditSplit = 'tabdo'
---
+-- autopairs
+-- let g:AutoPairsFlyMode = 1
+g.AutoPairsShortcutBackInsert = "<M-b>"
+g.AutoPairs =[[ {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'} ]] 
 -- nedCommenter
 g.NERDSpaceDelims = 1
 g.NERDCompactSexyComs = 1
@@ -334,11 +336,17 @@ map('v', ',', ':', {noremap = true})
 map('n', ':', ';', {noremap = true})
 map('n', ';', ',', {noremap = true})
 map('n', '<Esc><Esc>', ':nohl<CR>', {noremap = true})
+map('n', 'k', 'gk', {noremap = true})
+map('n', 'j', 'gj', {noremap = true})
+map('i', '<Up>', '<C-o>gk', {noremap = true})
+map('i', '<Down>', '<C-o>gj', {noremap = true})
 --
 map('n', '<Leader>co', '<Esc>:tabnew ' .. initLua .. '<CR>', {noremap = true})
 map('n', '<Leader>cr', '<Esc>:so ' .. initLua .. '<CR>', {noremap = true})
 map('n', '<Leader>po', '<Esc>:tabnew ' .. plugs .. '<CR>', {noremap = true})
 map('n', '<Leader>cd', '<Esc>:lcd %:p:h <CR>', {noremap = true})
+map('n', '<Leader>na', '<Esc>/[^\\x00-\\x7F] <CR>', {noremap = true})
+
 --
 -- " move between windows
 map('n', '<Leader>j', '<C-W><C-J>', {noremap = true})

@@ -141,9 +141,9 @@ export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
 export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
 export PATH=$PATH:/home/salatiel/scripts/:/home/salatiel/.local/bin/ # Add for nvr revease search in zathura
 export PATH=$PATH:/usr/local/MatLab/R2021a/bin/ # Add for nvr revease search in zathura
-export JAVA_HOME=/home/salatiel/android-studio/jre
+export JAVA_HOME=/home/salatiel/android-studio/jre/
 export PATH=$PATH:/home/salatiel/Android/Sdk/platform-tools/
-export PATH=$PATH:/home/salatiel/.cargo/bin/
+export PATH=$PATH:/home/salatiel/texlab/target/release/
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
