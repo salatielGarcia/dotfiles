@@ -1,0 +1,43 @@
+local status_ok, luasnip = pcall(require, 'luasnip')
+if not status_ok then
+	print('error check')
+	return
+end
+
+local types = require('luasnip.util.types')
+local s = luasnip.snippet -- Create a snippet
+local fmt = require('luasnip.extras.fmt').fmt -- Format strings a list of nodes
+local rep = require('luasnip.extras').rep -- Repeats the content of a node
+local i = luasnip.insert_node
+
+local function map(mode, lhs, rhs, opts)
+	local options = {noremap = true}
+	if opts then options = vim.tbl_extend('force', options, opts) end
+	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
+luasnip.config.set_config{
+	history = true,
+	updateevents = 'TextChanged,TextChangedI',
+	enable_autosnippets = true,
+
+	ext_opts = {
+		[types.choiceNode] = {
+			active = {
+				virt_text = {{'<-', 'Error'}},
+			},
+		},
+	},
+}
+
+luasnip.add_snippets(
+	'lua' , {
+		s('pcall', fmt('local status_ok, {} = pcall({}, "{}")\nif not status_ok then\n    return\nend', { i(1), i(2), rep(1) } ) ),
+	})
+
+map('i', '<Tab>', "luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'", {silent = true, expr = true})
+map('i', '<S-Tab>', "<cmd>lua require('luasnip').jump(-1)<CR>", {silent = true})
+map('s', '<Tab>', "<cmd>lua require('luasnip').jump(1)<CR>", {silent = true})
+map('s', '<S-Tab>', "<cmd>lua require('luasnip').jump(-1)<CR>", {silent = true})
+
+vim.api.nvim_set_keymap('n', '<Leader><Leader>s', '<cmd>source ~/.config/nvim/lua/luasnips.lua<CR>', {silent = true})

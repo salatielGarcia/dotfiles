@@ -305,3 +305,4 @@ export JAVA_HOME=/opt/android-studio/jre/
 export PATH=$PATH:/home/salatiel/Android/Sdk/platform-tools/
 # neofetch
 eval "$(starship init bash)"
+zsh

@@ -1,4 +1,3 @@
-
 Configuration files
 ===================
 
@@ -31,3 +30,8 @@ paru -Suy . << installListParu
 
 Para los widgets de awesome buscar awesome wm widgets
 
+# Instalar virtual desktop bar para Plasma
+
+```
+paru -Suy plasma5-applets-virtual-desktop-bar-git
+```

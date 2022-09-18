@@ -144,9 +144,10 @@ export PATH=$PATH:/usr/local/MatLab/R2021a/bin/ # Add for nvr revease search in 
 export JAVA_HOME=/home/salatiel/android-studio/jre/
 export PATH=$PATH:/home/salatiel/Android/Sdk/platform-tools/
 export PATH=$PATH:/home/salatiel/texlab/target/release/
+export LUA_PATH=/home/salatiel/.libs/lua/?.lua
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-alias luamake=/home/salatiel/.cache/nvim/nlua/sumneko_lua/lua-language-server/3rd/luamake/luamake
+# alias luamake=/home/salatiel/.cache/nvim/nlua/sumneko_lua/lua-language-server/3rd/luamake/luamake
 
 eval "$(starship init zsh)"

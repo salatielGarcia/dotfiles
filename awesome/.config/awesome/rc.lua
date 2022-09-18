@@ -122,24 +122,24 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 --     display_labels   = false,
 --     widget = wibox.widget.piechart
 -- }
-local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
-myRam = ram_widget({
-    width = 70,
-    step_width = 2,
-    step_spacing = 0,
-    color = '#434c5e'
-})
--- myRam = ramgraph_widget({
---     timeout = 1,
+-- local ram_widget = require("awesome-wm-widgets.ram-widget.ram-widget")
+-- myRam = ram_widget({
+--     width = 70,
+--     step_width = 2,
+--     step_spacing = 0,
+--     color = '#434c5e'
 -- })
--- CPU widget
-local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
-myCpu = cpu_widget({
-    width = 70,
-    step_width = 2,
-    step_spacing = 0,
-    color = '#434c5e'
-})
+-- -- myRam = ramgraph_widget({
+-- --     timeout = 1,
+-- -- })
+-- -- CPU widget
+-- local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
+-- myCpu = cpu_widget({
+--     width = 70,
+--     step_width = 2,
+--     step_spacing = 0,
+--     color = '#434c5e'
+-- })
 -- separator
 mySep = wibox.widget.textbox(' │ ')
 --Volume widget
@@ -161,42 +161,42 @@ myVolume = wibox.widget {
 	widget = wibox.widget.progressbar,
 }
 -- myVolume.value = tonumber("5")
-function update_volume(widget)
-        local fd = io.popen("amixer -D pulse sget Master")
-        local status = fd:read("*all")
-        fd:close()
-        local volume = tonumber(string.match(status, "(%d?%d?%d)%%"))
-        -- volume = string.format("% 3d", volume)
-        status = string.match(status, "%[(o[^%]]*)%]")
-        -- starting colour
-        -- local sr, sg, sb = 0x3F, 0x3F, 0x3F
-        -- -- ending colour
-        -- local er, eg, eb = 0xDC, 0xDC, 0xCC
-        -- local ir = math.floor(volume * (er - sr) + sr)
-        -- local ig = math.floor(volume * (eg - sg) + sg)
-        -- local ib = math.floor(volume * (eb - sb) + sb)
-        -- interpol_colour = string.format("%.2x%.2x%.2x", ir, ig, ib)
-        -- if string.find(status, "on", 1, true) then
-        --     volume = " <span background='#" .. interpol_colour .. "'>   </span>"
-        -- else
-        --     volume = " <span color='red' background='#" .. interpol_colour .. "'> M </span>"
-        -- end
-        widget.value = tonumber(volume)
-		myVolText.text = "  Vol:".. volume .. "%"
- end
-update_volume(myVolume)
-myVolume:connect_signal("button::press", function(_,_,_,button)
-	if (button == 4)     then 
-		awful.util.spawn("amixer -D pulse sset Master '5%+'", false)
-		update_volume(myVolume)
-	elseif (button == 5) then 
-		awful.util.spawn("amixer -D pulse sset Master '5%-'", false)
-		update_volume(myVolume)
-	elseif (button == 1) then 
-		awful.util.spawn("amixer -D pulse sset Master toggle", false)
-		update_volume(myVolume)
-	end
-end)
+-- function update_volume(widget)
+--         local fd = io.popen("amixer -D pulse sget Master")
+--         local status = fd:read("*all")
+--         fd:close()
+--         local volume = tonumber(string.match(status, "(%d?%d?%d)%%"))
+--         -- volume = string.format("% 3d", volume)
+--         status = string.match(status, "%[(o[^%]]*)%]")
+--         -- starting colour
+--         -- local sr, sg, sb = 0x3F, 0x3F, 0x3F
+--         -- -- ending colour
+--         -- local er, eg, eb = 0xDC, 0xDC, 0xCC
+--         -- local ir = math.floor(volume * (er - sr) + sr)
+--         -- local ig = math.floor(volume * (eg - sg) + sg)
+--         -- local ib = math.floor(volume * (eb - sb) + sb)
+--         -- interpol_colour = string.format("%.2x%.2x%.2x", ir, ig, ib)
+--         -- if string.find(status, "on", 1, true) then
+--         --     volume = " <span background='#" .. interpol_colour .. "'>   </span>"
+--         -- else
+--         --     volume = " <span color='red' background='#" .. interpol_colour .. "'> M </span>"
+--         -- end
+--         widget.value = tonumber(volume)
+-- 		myVolText.text = "  Vol:".. volume .. "%"
+--  end
+-- update_volume(myVolume)
+-- myVolume:connect_signal("button::press", function(_,_,_,button)
+-- 	if (button == 4)     then 
+-- 		awful.util.spawn("amixer -D pulse sset Master '5%+'", false)
+-- 		update_volume(myVolume)
+-- 	elseif (button == 5) then 
+-- 		awful.util.spawn("amixer -D pulse sset Master '5%-'", false)
+-- 		update_volume(myVolume)
+-- 	elseif (button == 1) then 
+-- 		awful.util.spawn("amixer -D pulse sset Master toggle", false)
+-- 		update_volume(myVolume)
+-- 	end
+-- end)
 -- awful.hooks.timer.register(1, function () update_volume(myVolume) end)
 --
 -- -- Create a textclock widget
@@ -320,13 +320,13 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+            -- mykeyboardlayout,
             wibox.widget.systray(),
 			-- myRam,
 			mySep,
-			myCpu,
-			mySep,
-			myRam,
+			-- myCpu,
+			-- mySep,
+			-- myRam,
 			mySep,
 			myVolText,
 			myVolume,
