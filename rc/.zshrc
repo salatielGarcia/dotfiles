@@ -145,6 +145,7 @@ export JAVA_HOME=/home/salatiel/android-studio/jre/
 export PATH=$PATH:/home/salatiel/Android/Sdk/platform-tools/
 export PATH=$PATH:/home/salatiel/texlab/target/release/
 export LUA_PATH=/home/salatiel/.libs/lua/?.lua
+export PYTHONPATH=/home/salatiel/.libs/python/
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

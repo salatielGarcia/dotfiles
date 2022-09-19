@@ -14,6 +14,13 @@ if not status_ok then
 end
 
 lspconfig.sumneko_lua.setup{}
+require'lspconfig'.pylsp.setup{ settings = { 
+	pylsp = {
+		plugins = {
+			pycodestyle = { ignore = {'W391'}, maxLineLength = 100 }
+		}
+	}
+} }
 
 mason.setup({
     ui = {

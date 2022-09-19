@@ -1,0 +1,6 @@
+* User defined ngspice init file
+set filetype = ascii
+* set ngdebug
+set numthreads = 16
+* set outputpath = C :\ Spice64 \ out
+set ngbehavior = hs

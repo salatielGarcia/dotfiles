@@ -30,8 +30,14 @@ paru -Suy . << installListParu
 
 Para los widgets de awesome buscar awesome wm widgets
 
-# Instalar virtual desktop bar para Plasma
+## Install virtual desktop bar for Plasma
 
 ```
 paru -Suy plasma5-applets-virtual-desktop-bar-git
+```
+
+## Set github to work with token
+
+```
+git remote set-url origin https://scuzzlebuzzle:<MYTOKEN>@github.com/scuzzlebuzzle/ol3-1.git
 ```
