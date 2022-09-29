@@ -8,7 +8,7 @@ end
 require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/lua/snips/"})
 
 luasnip.config.set_config{
-	history = true,
+	history = false,
 	updateevents = 'TextChanged,TextChangedI',
 	enable_autosnippets = false,
 }
@@ -91,9 +91,9 @@ cmp.setup {
 		-- Set `select` to `false` to only confirm explicitly selected items.
 		["<CR>"] = cmp.mapping.confirm { select = true },
 		["<Tab>"] = cmp.mapping(function(fallback)
-				if luasnip.expandable() then
-					luasnip.expand()
-				elseif luasnip.expand_or_jumpable() then
+				-- if luasnip.expandable() then
+				-- 	luasnip.expand()
+				if luasnip.expand_or_jumpable() then
 					luasnip.expand_or_jump()
 				elseif cmp.visible() then
 					cmp.select_next_item()

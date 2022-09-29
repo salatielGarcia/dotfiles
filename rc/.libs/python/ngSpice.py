@@ -21,22 +21,27 @@ import os
 # Replace a parameter with a given replacement number or string
 def paramRepl(par, rep, st):
     if type(rep) == str:
-        return re.sub(par + '\\ *=\\ *\\w', par + ' = ' + rep, st)
+        return re.sub(par + '\\ *=\\ *\\w*.+\\w+', par + ' = ' + rep, st)
     else:
-        return re.sub(par + '\\ *=\\ *\\w', par + ' = ' + str(rep), st)
+        return re.sub(par + '\\ *=\\ *\\w*.+\\w+', par + ' = ' + str(rep), st)
 
 
 # Run a ngSpice simulation with the fname.sp file
 def ngRun(fname):
-    cmd = 'ngspice -a -b -i ' + fname + '.sp' ' -o ' + fname + '.lis -r ' + fname + '.raw'
+    cmd = 'ngspice -a -b -i ' + fname + '.sp' ' -o ' + fname + '.lis -r ' + fname + '.raw >> temp'
     return os.system(cmd)
 
 
 # Clean .lis, .raw and .png files from directory
-def ngClean():
-    os.system('rm *.lis')
-    os.system('rm *.raw')
-    os.system('rm *.png')
+def ngClean(temp=False):
+    if temp:
+        os.system('rm temp.sp')
+        os.system('rm temp.lis')
+        os.system('rm temp.raw')
+    else:
+        os.system('rm *.lis')
+        os.system('rm *.raw')
+        os.system('rm *.png')
 
 
 # Import ngSpice output to object
@@ -49,6 +54,14 @@ class ngsOut:
         self._nPoints = 0
         self.lVars = []
         self.vals = {}
+
+    def __str__(self):
+        st = '{File: ' + self.spiceName + '.sp, '
+        st = st + 'Title: ' + self.title + ', '
+        st = st + 'Type: ' + self.simType + ', '
+        st = st + 'Vars: ' + str(self.lVars) + ', '
+        st = st + 'No. Points: ' + str(self.nPoints) + '}'
+        return st
 
     @property
     def nVars(self):
@@ -80,9 +93,9 @@ class ngsOut:
         vali = 0
         for line in spiceOut:
             if line.startswith('Title'):
-                self.title = re.sub('Title' + '\\ *:\\ *', '', line)
+                self.title = re.sub('Title' + '\\ *:\\ *', '', line).replace('\n', '')
             elif line.startswith('Plotname'):
-                self.simType = re.sub('Plotname' + '\\ *:\\ *', '', line)
+                self.simType = re.sub('Plotname' + '\\ *:\\ *', '', line).replace('\n', '')
             elif line.startswith('No. Variables'):
                 self.nVars = int(re.sub('No. Variables' + '\\ *:\\ *', '', line))
             elif line.startswith('No. Points'):

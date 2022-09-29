@@ -134,6 +134,11 @@ _G.packer_plugins = {
     path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  neorg = {
+    loaded = true,
+    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/neorg",
+    url = "https://github.com/nvim-neorg/neorg"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/nvim-autopairs",

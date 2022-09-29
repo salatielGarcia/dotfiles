@@ -1,11 +1,11 @@
 " setlocal guioptions=vAfcgt
 setlocal foldmethod=manual
 
-set makeprg=ngspice\ -a\ -b\ -i\ %\ -o\ %:t:r.lis\ -r\ %:t:r.raw
-set errorfile=.lis
-set makeef=.lis
-echo expand('%:t:r')
-set errorformat=%tarning:\ %m,
+setlocal makeprg=ngspice\ -a\ -b\ -i\ %\ -o\ %:t:r.lis\ -r\ %:t:r.raw
+setlocal errorfile=.lis
+setlocal makeef=.lis
+" echo expand('%:t:r')
+setlocal errorformat=%tarning:\ %m,
             \%C\ \ %.%#,
             \%tRROR:\ %m,
             \%E%trror\ on\ line\ %l\ :,

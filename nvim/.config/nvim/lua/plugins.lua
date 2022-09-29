@@ -55,7 +55,17 @@ return packer.startup(function(use)
 	use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}} }
 	use {'Triton171/telescope-better-find-files.nvim'}
 --
-	-- use {'nvim-neorg/neorg', requires = {{'nvim-lua/plenary.nvim'}}}
+	use {'nvim-neorg/neorg',
+		after = 'nvim-treesitter',
+		config = function ()
+			require('neorg').setup{
+				load = {
+						["core.defaults"] = {}
+					}
+			}
+		end,
+		requires = "nvim-lua/plenary.nvim",
+	}
 	-- use{'lervag/vimtex'}
 	-- use {"blackCauldron7/surround.nvim"}
 	-- use{'cespare/vim-toml'}
