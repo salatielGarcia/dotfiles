@@ -134,6 +134,11 @@ _G.packer_plugins = {
     path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["mintabline.vim"] = {
+    loaded = true,
+    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/mintabline.vim",
+    url = "https://github.com/sangdol/mintabline.vim"
+  },
   neorg = {
     loaded = true,
     path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/neorg",
@@ -149,6 +154,11 @@ _G.packer_plugins = {
     path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
+  ["nvim-dap"] = {
+    loaded = true,
+    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/nvim-dap",
+    url = "https://github.com/mfussenegger/nvim-dap"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
@@ -158,11 +168,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/nvim-surround",
     url = "https://github.com/kylechui/nvim-surround"
-  },
-  ["nvim-tabline"] = {
-    loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/nvim-tabline",
-    url = "https://github.com/crispgm/nvim-tabline"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -183,11 +188,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
-  },
-  playground = {
-    loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/playground",
-    url = "https://github.com/nvim-treesitter/playground"
   },
   ["plenary.nvim"] = {
     loaded = true,

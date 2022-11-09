@@ -39,14 +39,24 @@ local snips =  {
 			t({'','    '}), i(4),
 			t({'', 'end'})
 		}),
+		s('if', {
+		    t('if '), i(1), t(' then'),
+			t({'', '    '}), i(2),
+			t({'', 'end'})
+		}),
 		s('vprint', {
 		    t("print('"), i(1), t(" = ', "), rep(1), t(')')
 		}),
-		s('new', { 
+		s('func', {
+		    t('function '), i(1), t('('), i(2), t(')'),
+			t({'','    '}), i(3),
+			t({'', 'end'}),
+		}),
+		s('new', {
 			t("local gp = require ('gnuplot')"),
 			t({'', "local ul = require('uselib')"})
 		}),
-	} 
+	}
 
 local autosnips = {
 	}

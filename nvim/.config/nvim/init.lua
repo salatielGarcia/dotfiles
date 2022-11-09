@@ -29,8 +29,10 @@ require('surround')
 require('cmpSnips')
 require('lsp')
 require('treesit')
+require('tabs') -- Current plugin is vimscript 'mintabline'
 require('sline')
 require('tele')
 require('norg')
+-- require('git') -- no current Git plugin
 -- require('extras')
--- cmd('autocmd BufEnter,BufRead links.norg :setlocal nowrap')
+-- -- cmd('autocmd BufEnter,BufRead links.norg :setlocal nowrap')

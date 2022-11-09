@@ -13,18 +13,12 @@ luasnip.config.set_config{
 	enable_autosnippets = false,
 }
 
-local function map(mode, lhs, rhs, opts)
-	local options = {noremap = true}
-	if opts then options = vim.tbl_extend('force', options, opts) end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
+map('n', '<Leader>sn', ':tabnew ~/.config/nvim/lua/snips/<CR>')
 
 -- map('i', '<Tab>', "luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'", {silent = true, expr = true})
 -- map('i', '<S-Tab>', "<cmd>lua require('luasnip').jump(-1)<CR>", {silent = true})
 -- map('s', '<Tab>', "<cmd>lua require('luasnip').jump(1)<CR>", {silent = true})
 -- map('s', '<S-Tab>', "<cmd>lua require('luasnip').jump(-1)<CR>", {silent = true})
-
-vim.api.nvim_set_keymap('n', '<Leader><Leader>s', '<cmd>source ~/.config/nvim/lua/luasnips.lua<CR>', {silent = false})
 
 ----------------
 -- CMP config --
@@ -68,7 +62,11 @@ local kind_icons = {
   Operator = "",
   TypeParameter = "",
 }
--- find more here: https://www.nerdfonts.com/cheat-sheet
+
+local has_words_before = function()
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
 
 cmp.setup {
 	snippet = {
@@ -77,8 +75,8 @@ cmp.setup {
 		end,
 	},
 	mapping = {
-		["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
+		["<C-p>"] = cmp.mapping.select_prev_item(),
+		["<C-n>"] = cmp.mapping.select_next_item(),
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -86,39 +84,31 @@ cmp.setup {
 		["<C-e>"] = cmp.mapping {
 			i = cmp.mapping.abort(),
 			c = cmp.mapping.close(),
-		},
+			},
 		-- Accept currently selected item. If none selected, `select` first item.
 		-- Set `select` to `false` to only confirm explicitly selected items.
-		["<CR>"] = cmp.mapping.confirm { select = true },
+		["<CR>"] = cmp.mapping.confirm { select = false },
 		["<Tab>"] = cmp.mapping(function(fallback)
-				-- if luasnip.expandable() then
-				-- 	luasnip.expand()
-				if luasnip.expand_or_jumpable() then
-					luasnip.expand_or_jump()
-				elseif cmp.visible() then
-					cmp.select_next_item()
-				elseif check_backspace() then
-					fallback()
-				else
-					fallback()
-				end
-			end, {
-				"i",
-				"s",
-		}),
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			elseif has_words_before() then
+				cmp.complete()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
 		["<S-Tab>"] = cmp.mapping(function(fallback)
-				if luasnip.jumpable(-1) then
-					luasnip.jump(-1)
-				elseif cmp.visible() then
-					cmp.select_prev_item()
-				else
-					fallback()
-				end
-			end, {
-				"i",
-				"s",
-			}),
-		},
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+	},
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
@@ -135,8 +125,8 @@ cmp.setup {
 		end,
 	},
 	sources = {
-		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
+		{ name = "nvim_lsp" },
 		{ name = "buffer" },
 		{ name = "path" },
 		{ name = "spell" },
@@ -157,7 +147,7 @@ cmp.setup {
 	},
 }
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- Use buffer source for `/`.
 cmp.setup.cmdline('/', {
@@ -180,6 +170,3 @@ cmp.setup.cmdline(':', {
 		}, {}
 		)
 })
-
-
-map('n', '<Leader>so', ':tabnew ~/.config/nvim/lua/snips/lua.lua', {})

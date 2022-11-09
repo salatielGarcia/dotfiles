@@ -7,6 +7,9 @@ opt.relativenumber = true
 opt.mouse ='a'
 opt.termguicolors = true
 opt.ignorecase = true
+opt.smartindent = true
+opt.smarttab = true
+opt.autoindent = true
 opt.tabstop = 4
 opt.softtabstop = -1
 opt.shiftwidth = 0
@@ -25,9 +28,11 @@ opt.autowrite = true
 opt.laststatus = 3
 -- opt.autochdir = true
 opt.wildmode = 'longest:full'
+opt.showmode = false
 opt.showtabline = 2
 opt.completeopt = {"menuone", "preview"}
-opt.guitablabel = '%N\\ %f'
+-- opt.guitablabel = '%N\\ %f'
+-- opt.tabline = "%#Directory# %f %= %l,%c %= %p%%"
 --
 -- Remember previous position
 if fn.has('autocmd') then
@@ -46,10 +51,3 @@ autocmd!
 au TextYankPost * silent! lua vim.highlight.on_yank({higroup="WildMenu", timeout=400}) 
 augroup END
 ]])
-
-require('tabline').setup({
-    show_index = true,        -- show tab index
-    show_modify = true,       -- show buffer modification indicator
-    modify_indicator = '+', -- modify indicator
-    no_name = '[empty]',    -- no name buffer name
-})

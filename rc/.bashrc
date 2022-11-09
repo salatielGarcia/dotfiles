@@ -306,3 +306,4 @@ export PATH=$PATH:/home/salatiel/Android/Sdk/platform-tools/
 # neofetch
 eval "$(starship init bash)"
 zsh
+expot PYTHON_PATH=~/.libs/python/ngspice.py

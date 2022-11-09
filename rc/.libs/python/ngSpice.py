@@ -46,7 +46,7 @@ def ngClean(temp=False):
 
 # Import ngSpice output to object
 class ngsOut:
-    def __init__(self, fname):
+    def __init__(self, fname, temp = False):
         self.spiceName = fname
         self.title = ''
         self.simType = ''
@@ -54,6 +54,7 @@ class ngsOut:
         self._nPoints = 0
         self.lVars = []
         self.vals = {}
+        self.temp = temp
 
     def __str__(self):
         st = '{File: ' + self.spiceName + '.sp, '
@@ -85,7 +86,11 @@ class ngsOut:
             self.vals[q] = [0.0 for i in range(self.nPoints)]
 
     def loadData(self):
-        with open(self.spiceName + '.raw', 'r') as so:
+        if self.temp:
+            sName = 'temp'
+        else:
+            sName = self.spiceName
+        with open(sName + '.raw', 'r') as so:
             spiceOut = so.readlines()
         varFlag = False
         valFlag = False
