@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/salatiel/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/salatiel/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/salatiel/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/salatiel/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/salatiel/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "C:\\Users\\uie84799\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\share\\lua\\5.1\\?.lua;C:\\Users\\uie84799\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\share\\lua\\5.1\\?\\init.lua;C:\\Users\\uie84799\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\lib\\luarocks\\rocks-5.1\\?.lua;C:\\Users\\uie84799\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\lib\\luarocks\\rocks-5.1\\?\\init.lua"
+local install_cpath_pattern = "C:\\Users\\uie84799\\AppData\\Local\\Temp\\nvim\\packer_hererocks\\2.1.0-beta3\\lib\\lua\\5.1\\?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -75,143 +75,160 @@ time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["Comment.nvim"] = {
+    config = { "\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0" },
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/Comment.nvim",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
   },
   LuaSnip = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
   ["cmp-buffer"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-buffer",
     url = "https://github.com/hrsh7th/cmp-buffer"
   },
   ["cmp-cmdline"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-cmdline",
     url = "https://github.com/hrsh7th/cmp-cmdline"
   },
   ["cmp-nvim-lsp"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
   ["cmp-nvim-lua"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-nvim-lua",
     url = "https://github.com/hrsh7th/cmp-nvim-lua"
   },
   ["cmp-path"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/cmp-path",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
   ["cmp-spell"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/cmp-spell",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-spell",
     url = "https://github.com/f3fora/cmp-spell"
   },
   cmp_luasnip = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["lualine.nvim"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\mason-lspconfig.nvim",
     url = "https://github.com/williamboman/mason-lspconfig.nvim"
   },
   ["mason.nvim"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
   neorg = {
+    config = { "\27LJ\2\n`\0\0\5\0\a\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\5\0005\3\3\0004\4\0\0=\4\4\3=\3\6\2B\0\2\1K\0\1\0\tload\1\0\0\18core.defaults\1\0\0\nsetup\nneorg\frequire\0" },
+    load_after = {},
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/neorg",
+    needs_bufread = true,
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\neorg",
     url = "https://github.com/nvim-neorg/neorg"
   },
   ["nvim-autopairs"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-surround"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/nvim-surround",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-surround",
     url = "https://github.com/kylechui/nvim-surround"
   },
   ["nvim-tabline"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/nvim-tabline",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-tabline",
     url = "https://github.com/crispgm/nvim-tabline"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["onedark.nvim"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/onedark.nvim",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\onedark.nvim",
     url = "https://github.com/navarasu/onedark.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
   playground = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/playground",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\playground",
     url = "https://github.com/nvim-treesitter/playground"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["popup.nvim"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/popup.nvim",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
   ["telescope-better-find-files.nvim"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/telescope-better-find-files.nvim",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope-better-find-files.nvim",
     url = "https://github.com/Triton171/telescope-better-find-files.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/home/salatiel/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    path = "C:\\Users\\uie84799\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
+time([[Config for Comment.nvim]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-treesitter ]]
+vim.cmd [[ packadd neorg ]]
+
+-- Config for: neorg
+try_loadstring("\27LJ\2\n`\0\0\5\0\a\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\5\0005\3\3\0004\4\0\0=\4\4\3=\3\6\2B\0\2\1K\0\1\0\tload\1\0\0\18core.defaults\1\0\0\nsetup\nneorg\frequire\0", "config", "neorg")
+
+time([[Sequenced loading]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

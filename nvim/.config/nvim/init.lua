@@ -5,13 +5,30 @@
 										            By: Salatiel García
 --]]
 
-initLua = '~/.config/nvim/init.lua'
-plugs = '~/.config/nvim/lua/plugins.lua'
-undoDir =  '/home/salatiel/.config/nvim/undodir/'
+syst = 'conti'
+kb   = 'eng'
+
+if syst == 'lin' then
+	initLua = '~/.config/nvim/'
+	plugs = '~/.config/nvim/lua/plugins.lua'
+	undoDir =  '/home/salatiel/.config/nvim/undodir/'
+elseif syst == 'conti' then
+	wikiFiles =  'D:/docs/wiki'
+	initLua = '~/AppData/Local/nvim/'
+	plugs = '~/AppData/Local/nvim/lua/plugins.lua'
+	undoDir =  'C:/Users/uie84799/AppData/Local/nvim/undodir/'
+	snipsFiles = 'D:/docs/snips/'
+end
 -- snipsFiles = 'D:/docs/snips/'
-spellChoice = "nil"
-vim.g.mapleader = '\\'
-vim.g.maplocalleader = '\\'
+spellChoice = 'nil'
+
+if kb == 'eng' then
+	vim.g.mapleader = '\\'
+	vim.g.maplocalleader = '\\'
+elseif kb == 'esp' then
+	vim.g.mapleader = '¿'
+	vim.g.maplocalleader = '¿'
+end
 cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
 
 function map(mode, lhs, rhs, opts)
@@ -24,7 +41,6 @@ require('mappings')
 require('plugins')
 require('color')
 require('nvim-autopairs').setup{}
-require('comment')
 require('surround')
 require('cmpSnips')
 require('lsp')
@@ -32,5 +48,6 @@ require('treesit')
 require('sline')
 require('tele')
 require('norg')
--- require('extras')
+require('extras')
+require('comment')
 -- cmd('autocmd BufEnter,BufRead links.norg :setlocal nowrap')
