@@ -95,13 +95,16 @@ telescope.setup{
 -- 		}
 --   },
 -- }
--- require('telescope').load_extension('better_find_files')
---
---
--- -- Telescope mappings
-map('n', '<Space><Space>', ":Telescope find_files cwd=/home/salatiel/<CR>", {noremap=true})
+require('telescope').load_extension('better_find_files')
+
+-- Telescope mappings
+if syst == 'conti' then
+	map('n', '<Space><Space>', ":Telescope find_files cwd=D:/docs/<CR>", {noremap=true})
+elseif syst == 'lin' then
+	map('n', '<Space><Space>', ":Telescope find_files cwd=/home/salatiel/<CR>", {noremap=true})
+end
 map('n', '<Space>hh', ":Telescope find_files<CR>", {noremap=true})
-map('n', '<Space>co', ":Telescope find_files cwd=~/.config/nvim/<CR>", {noremap=true})
-map('n', '<Space>ft', ":Telescope find_files cwd=~/.config/nvim/ftplugin/<CR>", {noremap=true})
+map('n', '<Space>co', ':Telescope find_files cwd=' .. initLua .. '<CR>', {noremap=true})
+map('n', '<Space>ft', ":Telescope find_files cwd=" .. initLua .. 'ftplugin/<CR>', {noremap=true})
 map('n', '<Space>gh', ":Telescope grep_string search=-\\ [\\ ]<CR>", {noremap=true})
 map('n', '<Space>ht', ":Telescope help_tags<CR>", {noremap=true})
