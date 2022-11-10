@@ -17,49 +17,12 @@ local l = extras.l
 local rep = extras.rep
 local postfix = require("luasnip.extras.postfix").postfix
 
-local function tit(index)
-	return f(function(args)
-		return string.gsub(args[1][1], '.', '=')
-	end, {index})
-end
-
-
-local function stit(index)
-	return f(function(args)
-		return string.gsub(args[1][1], '.', '-')
-	end, {index})
-end
-
-local function sstit(index)
-	return f(function(args)
-		return string.gsub(args[1][1], '.', '~')
-	end, {index})
-end
-
 local snips =  {
-	s('tit', {
-	    i(1),
-		t({'', ''}), tit(1),
-		t({'', ''}),
-		t({'', ''}), i(0),
-	}),
-	s('stit', {
-	    i(1),
-		t({'', ''}), stit(1),
-		t({'', ''}),
-		t({'', ''}), i(0),
-	}),
-	s('sstit', {
-	    i(1),
-		t({'', ''}), sstit(1),
-		t({'', ''}),
-		t({'', ''}), i(0),
-	}),
 	s('it', {
-	    t('_'), i(1), t('_'),
+		t('/'), i(1), t('/'),
 	}),
 	s('bf', {
-	    t('**'), i(1), t('**'),
+	    t('*'), i(1), t('*'),
 	}),
 	s('tt', {
 	    t('`'), i(1), t('`'),

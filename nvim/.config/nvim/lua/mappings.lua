@@ -50,9 +50,14 @@ map('n', '<Leader>j', 'gj', {noremap = true, silent=true})
 map('n', '<C-k>', '3<C-y>', {noremap = true})
 map('n', '<C-j>', '3<C-e>', {noremap = true})
 --
-map('n', '>', '>>', {noremap = true})
-map('n', '<', '<<', {noremap = true})
 map('n', 'Y', 'y$', {noremap=true})
+if kb == 'eng' then
+	map('n', '>', '>>', {noremap = true})
+	map('n', '<', '<<', {noremap = true})
+elseif kb == 'esp' then
+	map('n', '<', '>>', {noremap = true})
+	map('n', '>', '<<', {noremap = true})
+end
 --
 -- Source lua configs
 map('n', '<Leader>ln', ':so %<CR>', {noremap = true})

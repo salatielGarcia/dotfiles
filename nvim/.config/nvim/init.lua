@@ -5,7 +5,7 @@
 										            By: Salatiel García
 --]]
 
-syst = 'conti'
+syst = 'lin'
 kb   = 'eng'
 
 if syst == 'lin' then
@@ -36,6 +36,7 @@ function map(mode, lhs, rhs, opts)
 	if opts then options = vim.tbl_extend('force', options, opts) end
 	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
+
 require('bconfig')
 require('mappings')
 require('plugins')

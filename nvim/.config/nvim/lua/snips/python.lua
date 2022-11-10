@@ -40,6 +40,10 @@ local snips =  {
 			t('if '), i(1), t(':'),
 			t({'', '    '}), i(2)
 		}),
+		s('for', {
+		    t('for '), i(1), t(' in '), i(2), t(':'),
+			t({'', '    '}), i(3),
+		}),
 		s('pggrid', {
 		    t('.showGrid(x = True, y = True)'),
 		}),

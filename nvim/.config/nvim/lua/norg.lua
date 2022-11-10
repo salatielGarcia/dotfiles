@@ -12,6 +12,7 @@ neorg.setup({
                 workspaces = {
 					reas = "~/Documents/notes/reas/",
                     pers = "~/Documents/notes/pers/",
+                    conti = "~/Documents/notes/conti/",
                 }
             }
         },
@@ -37,6 +38,8 @@ neorg.setup({
 -- Neorg mappings
 -- map('n', '<Leader>oo', ':NeorgStart<CR>', {noremap = true})
 map('n', '<Leader>or', ':Neorg workspace reas<CR>', {noremap = true})
+map('n', '<Leader>op', ':Neorg workspace pers<CR>', {noremap = true})
+map('n', '<Leader>oc', ':Neorg workspace conti<CR>', {noremap = true})
 -- map('n', '<Leader>op', ':Neorg workspace personal<CR>', {noremap = true})
 -- map('n', '<Leader>og', ':Neorg gtd ', {noremap = true})
 -- map('n', '<Space>gw', ":Telescope live_grep cwd=D:/docs/wiki<CR>", {noremap=true})
