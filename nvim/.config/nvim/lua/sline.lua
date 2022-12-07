@@ -130,7 +130,7 @@ lualine.setup {
 	},
 	sections = {
 		lualine_a = {getMode},
-		lualine_b = {spellStatus, 'branch'},
+		lualine_b = {spellStatus},
 		lualine_c = {apath},
 		-- lualine_x = {'encoding', 'fileformat', {'filetype', colored = true}},
 		lualine_x = {'branch', 'diff', 'diagnostics'},

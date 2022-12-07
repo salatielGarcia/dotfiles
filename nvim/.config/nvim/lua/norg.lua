@@ -10,9 +10,9 @@ neorg.setup({
         ["core.norg.dirman"] = {
             config = {
                 workspaces = {
-					reas = "~/Documents/notes/reas/",
-                    pers = "~/Documents/notes/pers/",
-                    conti = "~/Documents/notes/conti/",
+					reas = "~/docs/notes/reas/",
+                    pers = "~/docs/notes/pers/",
+                    conti = "~/docs/notes/conti/",
                 }
             }
         },
