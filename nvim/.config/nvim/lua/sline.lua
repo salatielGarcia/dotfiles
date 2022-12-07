@@ -2,39 +2,39 @@
 local opt = vim.opt
 
 local scrollbarSymbols = {'░', '█', '▐', '▌'}
-local colors = {
-	comm = '%#NonText#',
-	back = '%#EndOfBuffer#',
-	float = '%#FloatBorder#',
-	match = '%#FocusedSymbol#',
-	fore = '%#TermCursorNC#',
-	blue = '%#Directory#',
-	red = '%#ErrorMsg#',
-	yellow = '%#Question#',
-	cyan = '%#Title#',
-	purple = '%#Error#'
-}
+-- local colors = {
+-- 	comm = '%#NonText#',
+-- 	back = '%#EndOfBuffer#',
+-- 	float = '%#FloatBorder#',
+-- 	match = '%#FocusedSymbol#',
+-- 	fore = '%#TermCursorNC#',
+-- 	blue = '%#Directory#',
+-- 	red = '%#ErrorMsg#',
+-- 	yellow = '%#Question#',
+-- 	cyan = '%#Title#',
+-- 	purple = '%#Error#'
+-- }
 local icons = {
 	lang = ' ',
 	fold = ' ',
 	loc  = ' ',
 	git  = ' ',
 }
-local spacer = colors.back .. '  '
-local tab = colors.back .. '  %='
+-- local spacer = colors.back .. '  '
+-- local tab = colors.back .. '  %='
 
 local function getMode()
 	local cMode = vim.api.nvim_get_mode().mode
-	local col = ''
-	if cMode == 'n' then
-		col = colors.comm
-	elseif cMode == 'i' then
-		col = colors.blue
-	elseif cMode == 'V' then
-		col = colors.purple
-	elseif cMode == 'C' then
-		col = colors.yellow
-	end
+	-- local col = ''
+	-- if cMode == 'n' then
+	-- 	col = colors.comm
+	-- elseif cMode == 'i' then
+	-- 	col = colors.blue
+	-- elseif cMode == 'V' then
+	-- 	col = colors.purple
+	-- elseif cMode == 'C' then
+	-- 	col = colors.yellow
+	-- end
 	return cMode:upper()
 end
 
@@ -118,8 +118,6 @@ if not status_ok then
     return
 end
 
-
-
 lualine.setup {
 	options = {
 		icons_enabled = true,
@@ -135,7 +133,7 @@ lualine.setup {
 		lualine_b = {spellStatus, 'branch'},
 		lualine_c = {apath},
 		-- lualine_x = {'encoding', 'fileformat', {'filetype', colored = true}},
-		lualine_x = {},
+		lualine_x = {'branch', 'diff', 'diagnostics'},
 		-- lualine_x = {},
 		lualine_y = { {'filetype', colored = true }},
 		lualine_z = {percent, 'git'}
