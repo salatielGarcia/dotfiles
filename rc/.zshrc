@@ -160,8 +160,8 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 ######################################
 # Temp elden ring config: REMOVE
-alias bak='cp -v /home/salatiel/.steam/steam/steamapps/compatdata/1245620/pfx/drive_c/users/steamuser/Application\ Data/EldenRing/76561198280697366/ER0000.sl2 ~/Documents/'
-alias rest='cp -v ~/Documents/ER0000.sl2 /home/salatiel/.steam/steam/steamapps/compatdata/1245620/pfx/drive_c/users/steamuser/Application\ Data/EldenRing/76561198280697366/'
+alias bak='cp -v /home/salatiel/.steam/steam/steamapps/compatdata/1245620/pfx/drive_c/users/steamuser/Application\ Data/EldenRing/76561198280697366/ER0000.sl2 ~/docs/'
+alias rest='cp -v ~/docs/ER0000.sl2 /home/salatiel/.steam/steam/steamapps/compatdata/1245620/pfx/drive_c/users/steamuser/Application\ Data/EldenRing/76561198280697366/'
 #####################################
 # Temp Matlab config: REMOVE
 alias matl="sh ~/.matlab/bin/matlab"

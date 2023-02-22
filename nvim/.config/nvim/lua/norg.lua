@@ -16,15 +16,10 @@ neorg.setup({
                 }
             }
         },
-		['core.gtd.base'] = {
-			config = {
-				workspace = "reas"
-			}
-		},
 		['core.norg.concealer'] = {
 		    config = {
 		        conceal = false,
-		        adaptive = false,
+		        adaptive = true,
 		    },
 		},
 		["core.export"] = {
@@ -32,6 +27,13 @@ neorg.setup({
 				export_dir = "<export-dir>/<language>-export",
 		   }
 		},
+		["core.keybinds"] = {
+			config = {
+				hook = function(keybinds)
+					keybinds.remap_event("norg", "n", "<C-Space>", "core.norg.qol.todo_items.todo.task_done")
+				end,
+			}
+		}
     }
 })
 
