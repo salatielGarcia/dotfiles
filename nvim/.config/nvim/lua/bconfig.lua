@@ -1,6 +1,7 @@
 local opt = vim.opt  -- to set options
 local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 -- cmd "hi Comment guifg=#6F7A91"
+cmd('language en_US')
 opt.path = opt.path + '**'
 opt.number = true
 opt.relativenumber = true
@@ -48,6 +49,6 @@ end
 cmd([[
 augroup highlight_yank
 autocmd!
-au TextYankPost * silent! lua vim.highlight.on_yank({higroup="WildMenu", timeout=400}) 
+au TextYankPost * silent! lua vim.highlight.on_yank({higroup="WildMenu", timeout=100}) 
 augroup END
 ]])

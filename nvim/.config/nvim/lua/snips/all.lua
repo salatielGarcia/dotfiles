@@ -23,9 +23,6 @@ local snips =  {
 			t({'', '    '}), i(2),
 			t({'', '}),'})
 		}),
-		s('sjump', {
-			t("t('', '')"),
-		}),
 	} 
 
 local autosnips = {

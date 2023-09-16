@@ -1,11 +1,9 @@
---------------------
--- LuaSnip Config --
---------------------
 local status_ok, luasnip = pcall(require, "luasnip")
 if not status_ok then
+	print('snip failed')
     return
 end
-require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/lua/snips/"})
+require("luasnip.loaders.from_lua").load({paths = initLua .. "/lua/snips/"})
 
 luasnip.config.set_config{
 	history = false,
@@ -13,25 +11,24 @@ luasnip.config.set_config{
 	enable_autosnippets = false,
 }
 
-map('n', '<Leader>sn', ':tabnew ~/.config/nvim/lua/snips/<CR>')
+map('n', '<Leader>sn', ':Telescope find_files cwd=' .. initLua .. 'lua/snips<CR>')
 
--- map('i', '<Tab>', "luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'", {silent = true, expr = true})
--- map('i', '<S-Tab>', "<cmd>lua require('luasnip').jump(-1)<CR>", {silent = true})
--- map('s', '<Tab>', "<cmd>lua require('luasnip').jump(1)<CR>", {silent = true})
--- map('s', '<S-Tab>', "<cmd>lua require('luasnip').jump(-1)<CR>", {silent = true})
-
-----------------
--- CMP config --
-----------------
 
 local status_ok, cmp = pcall(require, "cmp")
 if not status_ok then
+	print('cmp failed')
     return
 end
 
 local check_backspace = function()
-  local col = vim.fn.col "." - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+	local col = vim.fn.col "." - 1
+	return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+end
+
+
+local has_words_before = function()
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
 --   פּ ﯟ   some other good icons
@@ -62,11 +59,6 @@ local kind_icons = {
   Operator = "",
   TypeParameter = "",
 }
-
-local has_words_before = function()
-	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
 
 cmp.setup {
 	snippet = {
@@ -109,21 +101,22 @@ cmp.setup {
 			end
 		end, { "i", "s" }),
 	},
-	formatting = {
-		fields = { "kind", "abbr", "menu" },
-		format = function(entry, vim_item)
-			-- Kind icons
-			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-			-- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-			vim_item.menu = ({
-				nvim_lsp = "[LSP]",
-				luasnip = "[Snippet]",
-				buffer = "[Buffer]",
-				path = "[Path]",
-			})[entry.source.name]
-			return vim_item
-		end,
-	},
+	-- formatting = {
+	-- 	fields = { "kind", "abbr", "menu" },
+	-- 	format = function(entry, vim_item)
+	-- 		-- Kind icons
+	-- 		vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+	-- 		vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+	-- 		vim_item.menu = ({
+	-- 			nvim_lsp = "[LSP]",
+	-- 			luasnip = "[Snippet]",
+	-- 			buffer = "[Buffer]",
+	-- 			path = "[Path]",
+	-- 			cmdline = "[cmd]"
+	-- 		})[entry.source.name]
+	-- 		return vim_item
+	-- 	end,
+	-- },
 	sources = {
 		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
@@ -147,26 +140,27 @@ cmp.setup {
 	},
 }
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
--- Use buffer source for `/`.
-cmp.setup.cmdline('/', {
-	completion = { autocomplete = true, keyword_length = 1, completeopt = 'menuone,noinsert'},
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
 	mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-        -- { name = 'buffer' }
-        { name = 'buffer', opts = { keyword_pattern = [=[[^[:blank:]].*]=] } }
-    }
+	sources = {
+		{ name = 'buffer' }
+	}
 })
---
--- Use cmdline & path source for ':'.
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
-	completion = { autocomplete = true, keyword_length = 1, completeopt = 'menuone,noinsert'},
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = cmp.config.sources({
-		{ name = 'cmdline' },
-		{ name = 'path' },
-		{ name = 'buffer' },
-		}, {}
-		)
+		{ name = 'path' }
+		}, {
+			{ name = 'cmdline' }
+	})
 })
+
+  -- Set up lspconfig.
+  -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  -- -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+  -- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
+  --   capabilities = capabilities
+  -- }

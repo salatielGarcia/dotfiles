@@ -4,10 +4,10 @@ setlocal foldmethod=indent
 " inoremap <buffer> <F5> <Esc>:w<CR>:!python %<CR>
 " nnoremap <buffer> <F5> :w<CR>:!python %<CR>
 compiler pyunit
-setlocal makeprg=python3\ %
+setlocal makeprg=python\ %
 
 nnoremap <buffer> <Leader>lo :tabnew ~/.config/nvim/ftplugin/python.vim<CR>
 nnoremap <buffer> <Leader>lr :so ~/.config/nvim/ftplugin/python.vim<CR>
-nnoremap <buffer> <Leader>pp :make!<CR>
+nnoremap <buffer> <Leader>pp :!python %<CR>
 
 setlocal completeopt-=preview

@@ -40,6 +40,9 @@ map('n', '<Leader>j', '<C-W><C-J>', {noremap = true})
 map('n', '<Leader>k', '<C-W><C-K>', {noremap = true})
 map('n', '<Leader>l', '<C-W><C-L>', {noremap = true})
 map('n', '<Leader>h', '<C-W><C-H>', {noremap = true})
+
+-- Neotree
+map('n', '<Leader>T', '<Esc>:Neotree toggle<CR>', {noremap = true})
 --
 map('n', '<Leader>ta', '<Esc>:tabnew **/*', {noremap = true})
 map('n', '<Leader>tn', '<Esc>:tabnew ', {noremap = true})
@@ -62,9 +65,6 @@ end
 -- Source lua configs
 map('n', '<Leader>ln', ':so %<CR>', {noremap = true})
 --map('t', '<F12>', '<C-\><C-n>:', {noremap = true})
-
--- extFiles Mappings
-map('n', '<Leader><Leader>e', ':lua require("extFiles").ext_file()<CR>', {noremap = true})
 --
 -- Text Centering
 map('n', '{', '{zzzv', {noremap=true})

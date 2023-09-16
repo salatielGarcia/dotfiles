@@ -5,19 +5,19 @@
 										            By: Salatiel García
 --]]
 
-syst = 'lin'
-kb   = 'eng'
+syst = 'conti'
+kb   = 'esp'
 
 if syst == 'lin' then
 	initLua = '~/.config/nvim/'
 	plugs = '~/.config/nvim/lua/plugins.lua'
 	undoDir =  '/home/salatiel/.config/nvim/undodir/'
 elseif syst == 'conti' then
-	wikiFiles =  'D:/docs/wiki'
-	initLua = '~/AppData/Local/nvim/'
-	plugs = '~/AppData/Local/nvim/lua/plugins.lua'
+	wikiFiles =  'C:/Users/uie84799/OneDrive - Continental AG/Documents/docs/notes/conti/wiki'
+	initLua = 'C:/Users/uie84799/AppData/Local/nvim/'
+	plugs = 'C:/Users/uie84799/AppData/Local/nvim/lua/plugins.lua'
 	undoDir =  'C:/Users/uie84799/AppData/Local/nvim/undodir/'
-	snipsFiles = 'D:/docs/snips/'
+	snipsFiles = 'C:/Users/uie84799/OneDrive - Continental AG/Documents/docs/snips'
 end
 -- snipsFiles = 'D:/docs/snips/'
 spellChoice = 'nil'
@@ -37,20 +37,39 @@ function map(mode, lhs, rhs, opts)
 	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+if vim.g.neovide then
+	vim.opt.guifont = {'Hack\\ Nerd\\ Font\\ Mono:h12'}
+	vim.g.neovide_scale_factor = 0.80
+	vim.g.neovide_transparency = 0.85
+	vim.g.neovide_floating_blur_amount_x = 2.0
+	vim.g.neovide_floating_blur_amount_y = 2.0
+	vim.g.neovide_scroll_animation_length = 0.3
+	vim.g.neovide_hide_mouse_when_typing = false
+	vim.g.neovide_remember_window_size = true
+	vim.g.neovide_cursor_animation_length = 0.02
+end
+
 require('bconfig')
 require('mappings')
+-- Basic plugins
 require('plugins')
 require('color')
-require('nvim-autopairs').setup{}
+require('nvim-autopairs').setup()
 require('surround')
-require('cmpSnips')
-require('lsp')
-require('treesit')
--- require('tabs') -- Current plugin is vimscript 'mintabline'
+require('Comment').setup()
 require('sline')
+-- Telescope
 require('tele')
+-- Completion
+require('cmpSnips')
+-- LSP
+require('lsp')
+-- Treesitter
+-- require('treesit')
 require('norg')
--- require('git') -- no current Git plugin
-require('extras')
--- cmd('autocmd BufEnter,BufRead links.norg :setlocal nowrap')
-require('comment')
+-- Neo Tree
+require('tree')
+require('neogit').setup()
+
+require('startup').setup()
+cmd 'cd D:/DSUsers/uie84799/fbak/Documents/docs'

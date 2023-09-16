@@ -4,44 +4,39 @@ if not status_ok then
     return
 end
 
-neorg.setup({
-    load = {
-        ["core.defaults"] = {},
-        ["core.norg.dirman"] = {
-            config = {
-                workspaces = {
-					reas = "~/docs/notes/reas/",
-                    pers = "~/docs/notes/pers/",
-                    conti = "~/docs/notes/conti/",
-                }
-            }
-        },
-		['core.norg.concealer'] = {
+neorg.setup{
+	load = {
+		["core.defaults"] = {},
+		["core.dirman"] = {
+			config = {
+				workspaces = {
+					reas = "D:/DSUsers/uie84799/fbak/Documents/docs/notes/reas/",
+					pers = "D:/DSUsers/uie84799/fbak/Documents/docs/notes/pers/",
+					conti = "D:/DSUsers/uie84799/fbak/Documents/docs/notes/conti/",
+				},
+				index = 'index.norg'
+			}
+		},
+		['core.concealer'] = {
 		    config = {
-		        conceal = false,
-		        adaptive = true,
+				conceal = true,
+				adaptive = true,
 		    },
 		},
-		["core.export"] = {
-			config = { -- Note that this table is optional and doesn't need to be provided
-				export_dir = "<export-dir>/<language>-export",
-		   }
-		},
-		["core.keybinds"] = {
-			config = {
-				hook = function(keybinds)
-					keybinds.remap_event("norg", "n", "<C-Space>", "core.norg.qol.todo_items.todo.task_done")
-				end,
-			}
-		}
-    }
-})
+		['core.itero'] = {},
+		-- ["core.export"] = {
+		-- 	config = { -- Note that this table is optional and doesn't need to be provided
+		-- 		export_dir = "<export-dir>/<language>-export",
+		--    }
+		-- },
+	}
+}
 
 -- Neorg mappings
 -- map('n', '<Leader>oo', ':NeorgStart<CR>', {noremap = true})
-map('n', '<Leader>or', ':Neorg workspace reas<CR>', {noremap = true})
-map('n', '<Leader>op', ':Neorg workspace pers<CR>', {noremap = true})
-map('n', '<Leader>oc', ':Neorg workspace conti<CR>', {noremap = true})
+map('n', '<Leader>or', ':Neorg workspace reas<CR><CR>', {noremap = true})
+map('n', '<Leader>op', ':Neorg workspace pers<CR><CR>', {noremap = true})
+map('n', '<Leader>oc', ':Neorg workspace conti<CR><CR>', {noremap = true})
 -- map('n', '<Leader>op', ':Neorg workspace personal<CR>', {noremap = true})
 -- map('n', '<Leader>og', ':Neorg gtd ', {noremap = true})
 -- map('n', '<Space>gw', ":Telescope live_grep cwd=D:/docs/wiki<CR>", {noremap=true})
