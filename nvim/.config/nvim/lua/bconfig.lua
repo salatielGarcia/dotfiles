@@ -1,7 +1,7 @@
 local opt = vim.opt  -- to set options
 local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 -- cmd "hi Comment guifg=#6F7A91"
-cmd('language en_US')
+-- cmd('language en_US')
 opt.path = opt.path + '**'
 opt.number = true
 opt.relativenumber = true
@@ -36,9 +36,20 @@ opt.completeopt = {"menuone", "preview"}
 -- opt.tabline = "%#Directory# %f %= %l,%c %= %p%%"
 --
 -- Remember previous position
-if fn.has('autocmd') then
-	cmd([[ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]])
-end
+vim.api.nvim_create_autocmd('BufReadPost', {
+	group = user_event,
+	callback = function(args)
+		local valid_line = vim.fn.line([['"]]) >= 1 and vim.fn.line([['"]]) < vim.fn.line('$')
+		local not_commit = vim.b[args.buf].filetype ~= 'commit'
+
+		if valid_line and not_commit then
+			vim.cmd([[normal! g`"]])
+		end
+	end
+})
+-- if fn.has('autocmd') then
+-- 	cmd([[ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]])
+-- end
 --
 -- Change comments color
 -- local ns = vim.api.nvim_create_namespace('')
@@ -46,9 +57,16 @@ end
 -- vim.api.nvim_set_hl(ns, 'Comment', {fg = '#6F7A91'})
 --
 -- Highlight yank
-cmd([[
-augroup highlight_yank
-autocmd!
-au TextYankPost * silent! lua vim.highlight.on_yank({higroup="WildMenu", timeout=100}) 
-augroup END
-]])
+vim.api.nvim_create_autocmd ('TextYankPost', {
+	group = highlight_yank,
+	pattern = '*',
+	callback = function(args)
+		vim.highlight.on_yank({higroup="WildMenu", timeout=100})
+	end
+})
+-- cmd([[
+-- augroup highlight_yank
+-- autocmd!
+-- au TextYankPost * silent! lua vim.highlight.on_yank({higroup="WildMenu", timeout=100}) 
+-- augroup END
+-- ]])

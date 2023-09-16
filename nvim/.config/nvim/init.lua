@@ -5,22 +5,22 @@
 										            By: Salatiel García
 --]]
 
-syst = 'conti'
-kb   = 'esp'
+_G.kb = 'eng'
 
-if syst == 'lin' then
-	initLua = '~/.config/nvim/'
-	plugs = '~/.config/nvim/lua/plugins.lua'
-	undoDir =  '/home/salatiel/.config/nvim/undodir/'
-elseif syst == 'conti' then
-	wikiFiles =  'C:/Users/uie84799/OneDrive - Continental AG/Documents/docs/notes/conti/wiki'
-	initLua = 'C:/Users/uie84799/AppData/Local/nvim/'
-	plugs = 'C:/Users/uie84799/AppData/Local/nvim/lua/plugins.lua'
-	undoDir =  'C:/Users/uie84799/AppData/Local/nvim/undodir/'
-	snipsFiles = 'C:/Users/uie84799/OneDrive - Continental AG/Documents/docs/snips'
+local syst = vim.loop.os_uname().sysname
+if syst == 'Linux' then
+	_G.initLua = '~/.config/nvim/'
+	_G.plugs = '~/.config/nvim/lua/plugins.lua'
+	_G.undoDir =  '/home/salatiel/.config/nvim/undodir/'
+elseif syst == 'Windows' then
+	_G.wikiFiles =  'C:/Users/uie84799/OneDrive - Continental AG/Documents/docs/notes/conti/wiki'
+	_G.initLua = 'C:/Users/uie84799/AppData/Local/nvim/'
+	_G.plugs = 'C:/Users/uie84799/AppData/Local/nvim/lua/plugins.lua'
+	_G.undoDir =  'C:/Users/uie84799/AppData/Local/nvim/undodir/'
+	_G.snipsFiles = 'C:/Users/uie84799/OneDrive - Continental AG/Documents/docs/snips'
 end
 -- snipsFiles = 'D:/docs/snips/'
-spellChoice = 'nil'
+_G.spellChoice = 'nil'
 
 if kb == 'eng' then
 	vim.g.mapleader = '\\'
@@ -29,9 +29,9 @@ elseif kb == 'esp' then
 	vim.g.mapleader = '¿'
 	vim.g.maplocalleader = '¿'
 end
-cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
+_G.cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
 
-function map(mode, lhs, rhs, opts)
+function _G.map(mode, lhs, rhs, opts)
 	local options = {noremap = true}
 	if opts then options = vim.tbl_extend('force', options, opts) end
 	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
@@ -65,11 +65,17 @@ require('cmpSnips')
 -- LSP
 require('lsp')
 -- Treesitter
--- require('treesit')
+require('treesit')
 require('norg')
 -- Neo Tree
 require('tree')
-require('neogit').setup()
+require('neogit').setup() -- Do not add args {}, clears config
 
-require('startup').setup()
-cmd 'cd D:/DSUsers/uie84799/fbak/Documents/docs'
+require('startup').setup() -- Do not add args {}, clears config
+
+if syst ~= 'Linux' then
+	print('not exe')
+	cmd 'cd D:\\'
+else
+	print('exe')
+end

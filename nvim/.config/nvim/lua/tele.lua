@@ -47,5 +47,6 @@ telescope.setup{
 map('n', '<Space><Space>', ":Telescope find_files<CR>", {noremap=true})
 map('n', '<Space>co', ':Telescope find_files cwd=' .. initLua .. '<CR>', {noremap=true})
 map('n', '<Space>ft', ":Telescope find_files cwd=" .. initLua .. 'ftplugin/<CR>', {noremap=true})
-map('n', '<Space>gh', ":Telescope grep_string search=-\\ [\\ ]<CR>", {noremap=true})
+map('n', '<Space>td', ":Telescope grep_string search=-\\ (\\ )<CR>", {noremap=true})
 map('n', '<Space>ht', ":Telescope help_tags<CR>", {noremap=true})
+map('n', '<Space>lg', ":Telescope live_grep<CR>", {noremap=true})

@@ -16,7 +16,7 @@ local scrollbarSymbols = {'░', '█', '▐', '▌'}
 -- }
 local icons = {
 	lang = ' ',
-	fold = ' ',
+	fold = ' ',
 	loc  = ' ',
 	git  = ' ',
 }

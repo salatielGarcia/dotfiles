@@ -45,8 +45,10 @@ require("lazy").setup({
 	'williamboman/mason-lspconfig.nvim',
 	-- Treesitter
 	'nvim-treesitter/nvim-treesitter',
-	-- Neorg7
+	-- Neorg
 	'nvim-neorg/neorg',
+	-- Latex
+	'lervag/vimtex',
 	-- Startup
 	'startup-nvim/startup.nvim',
 	-- Neotree
