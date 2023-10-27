@@ -27,7 +27,7 @@ require("lazy").setup({
 	'numToStr/Comment.nvim',
 	'nvim-lua/plenary.nvim',
 	-- Telescope
-	{ 'nvim-telescope/telescope.nvim', tag = '0.1.1',
+	{ 'nvim-telescope/telescope.nvim', tag = '0.1.4',
 		dependencies = { 'nvim-lua/plenary.nvim' }
 	},
 	-- Completion
@@ -39,25 +39,30 @@ require("lazy").setup({
 	'hrsh7th/nvim-cmp',
 	'L3MON4D3/LuaSnip',
 	'saadparwaiz1/cmp_luasnip',
-	-- LSP
+	-- -- LSP
 	'neovim/nvim-lspconfig',
 	'williamboman/mason.nvim',
 	'williamboman/mason-lspconfig.nvim',
-	-- Treesitter
+	-- DAP
+	'mfussenegger/nvim-dap',
+	'rcarriga/nvim-dap-ui',
+    'jay-babu/mason-nvim-dap.nvim',
+	-- -- Treesitter
 	'nvim-treesitter/nvim-treesitter',
-	-- Neorg
+	-- -- Neorg
 	'nvim-neorg/neorg',
-	-- Latex
+	-- -- Latex
 	'lervag/vimtex',
-	-- Startup
+	-- -- Startup
 	'startup-nvim/startup.nvim',
-	-- Neotree
+	-- -- Neotree
 	{"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 		}
 	},
+	-- Git 
 	{"NeogitOrg/neogit",
 		dependencies = {
 			"nvim-lua/plenary.nvim",         -- required

@@ -8,7 +8,11 @@ local actions_state = require('telescope.actions.state')
 
 local external_open = function (prompt_bufnr)
     local selected_entry = actions_state.get_selected_entry()
-	cmd('!start "" ' .. selected_entry[1])
+	if vim.fn.has('win64') ~= 0 then
+		cmd('!start "" ' .. selected_entry[1])
+	elseif vim.fn.has('linux') ~= 0 then
+		cmd('!xdg-open ' .. selected_entry[1])
+	end
 	actions.close(prompt_bufnr)
 end
 

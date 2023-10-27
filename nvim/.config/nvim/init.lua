@@ -54,7 +54,7 @@ require('mappings')
 -- Basic plugins
 require('plugins')
 require('color')
-require('nvim-autopairs').setup()
+require('pairs')
 require('surround')
 require('Comment').setup()
 require('sline')

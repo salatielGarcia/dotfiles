@@ -11,7 +11,7 @@ luasnip.config.set_config{
 	enable_autosnippets = false,
 }
 
-map('n', '<Leader>sn', ':Telescope find_files cwd=' .. initLua .. 'lua/snips<CR>')
+map('n', '<Space>sn', ':Telescope find_files cwd=' .. initLua .. 'lua/snips<CR>')
 
 
 local status_ok, cmp = pcall(require, "cmp")

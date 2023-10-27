@@ -8,6 +8,6 @@ setlocal makeprg=python\ %
 
 nnoremap <buffer> <Leader>lo :tabnew ~/.config/nvim/ftplugin/python.vim<CR>
 nnoremap <buffer> <Leader>lr :so ~/.config/nvim/ftplugin/python.vim<CR>
-nnoremap <buffer> <Leader>pp :!python %<CR>
+nnoremap <buffer> <Leader>pp :make<CR>
 
 setlocal completeopt-=preview

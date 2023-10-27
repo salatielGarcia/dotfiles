@@ -33,7 +33,7 @@ local snips =  {
 		    t("print('"), i(1), t(" = ', "), rep(1), t(')')
 		}),
 		s('new', {
-			t("import matplotlib.pyplot as plt"),
+			t('import matplotlib.pyplot as plt'),
 			t({'', "import numpy as np"})
 		}),
 		s('if', {
@@ -46,6 +46,10 @@ local snips =  {
 		}),
 		s('pggrid', {
 		    t('.showGrid(x = True, y = True)'),
+		}),
+		s('def', {
+			t('def '), i(1), t('('), i(2), t('):'),
+			t({ '', '    ' }), i(3),
 		}),
 	}
 

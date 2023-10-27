@@ -13,6 +13,20 @@ if not status_ok then
     return
 end
 
+local status_ok, mdap = pcall(require, "mason-nvim-dap")
+if not status_ok then
+    return
+end
+
+local status_ok, dap = pcall(require, "dap")
+if not status_ok then
+    return
+end
+
+local status_ok, dapui = pcall(require, "dapui")
+if not status_ok then
+    return
+end
 ----------
 -- LUA
 ----------
@@ -55,6 +69,11 @@ lspconfig.pyright.setup{
 	}
 }
 
+
+----------
+-- Mason
+----------
+
 mason.setup({
     ui = {
         icons = {
@@ -65,6 +84,38 @@ mason.setup({
     }
 })
 
+dapui.setup()
+
+mdap.setup()
+dap.configurations.python = {
+	{
+		type = 'python';
+		request = 'launch';
+		name = "Launch file";
+		program = "${file}";
+		pythonPath = function()
+			return '/usr/bin/python'
+		end;
+	},
+}
+
+dap.adapters.python = {
+	type = 'executable',
+	-- command = 'C:\\Users\\uie84799\\scoop\\apps\\python\\current\\python.exe',
+	command = 'python',
+	args = { '-m', "debugpy.adapter" },
+}
+
+vim.keymap.set('n', '<F5>', function() dap.continue() end)
+vim.keymap.set('n', '<F10>', function() dap.step_over() end)
+vim.keymap.set('n', '<F11>', function() dap.step_into() end)
+vim.keymap.set('n', '<F12>', function() dap.step_out() end)
+vim.keymap.set('n', '<Leader>b', function() dap.toggle_breakpoint() end)
+vim.keymap.set('n', '<Leader>B', function() dap.set_breakpoint() end)
+vim.keymap.set('n', '<Leader>dr', function() dap.repl.open() end)
+vim.keymap.set('n', '<Leader>dl', function() dap.run_last() end)
+vim.keymap.set('n', '<Leader>du', function() dapui.open() end)
+vim.keymap.set('n', '<Leader>dc', function() dapui.close() end)
 
 
 -- -- Use an on_attach function to only map the following keys

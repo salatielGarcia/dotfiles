@@ -48,7 +48,7 @@
 -- end
 --
 -- parser_configs.markdown.filetype_to_parsername = "octo"
-require 'nvim-treesitter.install'.compilers = { "zig" }
+-- require 'nvim-treesitter.install'.compilers = { "zig" }
 
 -- require'nvim-treesitter.configs'.setup{}
 require'nvim-treesitter.configs'.setup {

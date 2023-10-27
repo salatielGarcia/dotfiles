@@ -10,9 +10,9 @@ neorg.setup{
 		["core.dirman"] = {
 			config = {
 				workspaces = {
-					reas = "D:/DSUsers/uie84799/fbak/Documents/docs/notes/reas/",
-					pers = "D:/DSUsers/uie84799/fbak/Documents/docs/notes/pers/",
-					conti = "D:/DSUsers/uie84799/fbak/Documents/docs/notes/conti/",
+					reas = '~/Documents/notes/reas/',
+					pers = '~/Documents/notes/pers/',
+					conti = '~/Documents/notes/conti/',
 				},
 				index = 'index.norg'
 			}
@@ -34,6 +34,7 @@ neorg.setup{
 
 -- Neorg mappings
 -- map('n', '<Leader>oo', ':NeorgStart<CR>', {noremap = true})
+map('n', '<Leader>oi', ':Neorg index<CR><CR>', {noremap = true})
 map('n', '<Leader>or', ':Neorg workspace reas<CR><CR>', {noremap = true})
 map('n', '<Leader>op', ':Neorg workspace pers<CR><CR>', {noremap = true})
 map('n', '<Leader>oc', ':Neorg workspace conti<CR><CR>', {noremap = true})

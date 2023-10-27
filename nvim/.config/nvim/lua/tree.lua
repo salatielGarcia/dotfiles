@@ -15,11 +15,11 @@ ntree.setup({
 			local node = state.tree:get_node()
 			local path = node:get_id()
 			path = vim.fn.shellescape(path, 1)
-			print(path)
-			-- macOs: open file in default application in the background.
-			cmd('!start "" ' .. path)
-			-- Linux: open file in default application
-			-- vim.api.nvim_command("silent !xdg-open " .. path)
+			if vim.fn.has('win64') ~= 0 then
+				cmd('!start "" ' .. selected_entry[1])
+			elseif vim.fn.has('linux') ~= 0 then
+				cmd('!xdg-open ' .. selected_entry[1])
+			end
 			end,
 		},
 	},
