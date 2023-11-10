@@ -85,7 +85,15 @@ mason.setup({
 })
 
 dapui.setup()
-
+dap.listeners.after.event_initialized["dapui_config"] = function()
+	dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+	dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+	dapui.close()
+end
 mdap.setup()
 dap.configurations.python = {
 	{
@@ -114,8 +122,8 @@ vim.keymap.set('n', '<Leader>b', function() dap.toggle_breakpoint() end)
 vim.keymap.set('n', '<Leader>B', function() dap.set_breakpoint() end)
 vim.keymap.set('n', '<Leader>dr', function() dap.repl.open() end)
 vim.keymap.set('n', '<Leader>dl', function() dap.run_last() end)
-vim.keymap.set('n', '<Leader>du', function() dapui.open() end)
-vim.keymap.set('n', '<Leader>dc', function() dapui.close() end)
+-- vim.keymap.set('n', '<Leader>du', function() dapui.open() end)
+-- vim.keymap.set('n', '<Leader>dc', function() dapui.close() end)
 
 
 -- -- Use an on_attach function to only map the following keys
