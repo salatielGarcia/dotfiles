@@ -72,10 +72,10 @@ require('tree')
 require('neogit').setup() -- Do not add args {}, clears config
 
 require('startup').setup() -- Do not add args {}, clears config
-
-if syst ~= 'Linux' then
-	print('not exe')
-	cmd 'cd D:\\'
-else
-	print('exe')
-end
+require('floaterm')
+-- if syst ~= 'Linux' then
+-- 	print('not exe')
+-- 	cmd 'cd D:\\'
+-- else
+-- 	print('exe')
+-- end

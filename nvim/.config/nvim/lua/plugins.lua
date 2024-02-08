@@ -71,6 +71,7 @@ require("lazy").setup({
 			"ibhagwan/fzf-lua",              -- optional
 		},
 		config = true
-	}
+	},
+	'voldikss/vim-floaterm'
 })
 
