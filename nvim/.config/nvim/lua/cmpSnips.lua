@@ -122,7 +122,15 @@ cmp.setup {
 		{ name = "nvim_lsp" },
 		{ name = "buffer" },
 		{ name = "path" },
-		{ name = "spell" },
+		{ name = "mkdnflow" },
+		{ name = "spell",
+			option = {
+				keep_all_entries = false,
+				enable_in_context = function()
+					return true
+				end,
+			},
+		},
 		{ name = "nvim_lua" },
 	},
 	confirm_opts = {

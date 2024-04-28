@@ -45,12 +45,14 @@ require("lazy").setup({
 	'williamboman/mason-lspconfig.nvim',
 	-- DAP
 	'mfussenegger/nvim-dap',
-	'rcarriga/nvim-dap-ui',
     'jay-babu/mason-nvim-dap.nvim',
+	{"rcarriga/nvim-dap-ui",
+		dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"}
+	},
 	-- -- Treesitter
 	'nvim-treesitter/nvim-treesitter',
-	-- -- Neorg
-	'nvim-neorg/neorg',
+	-- Wiki
+	'jakewvincent/mkdnflow.nvim',
 	-- -- Latex
 	'lervag/vimtex',
 	-- -- Startup

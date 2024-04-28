@@ -54,3 +54,5 @@ map('n', '<Space>ft', ":Telescope find_files cwd=" .. initLua .. 'ftplugin/<CR>'
 map('n', '<Space>td', ":Telescope grep_string search=-\\ (\\ )<CR>", {noremap=true})
 map('n', '<Space>ht', ":Telescope help_tags<CR>", {noremap=true})
 map('n', '<Space>lg', ":Telescope live_grep<CR>", {noremap=true})
+
+map('n', '<Space>nt', ":Telescope find_files cwd=~/docs/notes/<CR>", {noremap=true})

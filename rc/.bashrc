@@ -304,6 +304,6 @@ export PATH=$PATH:/usr/local/MatLab/R2021a/bin/ # Add for nvr revease search in 
 export JAVA_HOME=/opt/android-studio/jre/
 export PATH=$PATH:/home/salatiel/Android/Sdk/platform-tools/
 # neofetch
-eval "$(starship init bash)"
+# eval "$(starship init bash)"
 zsh
 expot PYTHON_PATH=~/.libs/python/ngspice.py

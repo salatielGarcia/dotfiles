@@ -71,6 +71,20 @@ lspconfig.pyright.setup{
 
 
 ----------
+-- Markdown
+----------
+lspconfig.marksman.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+	cmd = { "marksman", "server" },
+	settings = {
+		marksman = {
+			filetypes = {'markdown', '*.md', 'markdown.mdx'}
+		}
+	}
+}
+
+----------
 -- Mason
 ----------
 

@@ -66,7 +66,7 @@ require('cmpSnips')
 require('lsp')
 -- Treesitter
 require('treesit')
-require('norg')
+require('notes')
 -- Neo Tree
 require('tree')
 require('neogit').setup() -- Do not add args {}, clears config

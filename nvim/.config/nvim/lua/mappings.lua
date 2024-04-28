@@ -62,6 +62,8 @@ elseif kb == 'esp' then
 	map('n', '>', '<<', {noremap = true})
 end
 --
+-- Open notes index file
+map('n', '<Leader>op', '<Esc>:e ~/docs/notes/pers/index.md', {noremap = true})
 -- Source lua configs
 map('n', '<Leader>ln', ':so %<CR>', {noremap = true})
 --map('t', '<F12>', '<C-\><C-n>:', {noremap = true})

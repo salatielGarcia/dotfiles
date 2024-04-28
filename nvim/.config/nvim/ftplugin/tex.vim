@@ -40,7 +40,7 @@ function! TexJump2Frame( cnt, dir )
 endfunction
 " au BufEnter destratShort02.tex let g:Tex_BibtexFlavor = 'bibtex'
 " Autopairs
-let b:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':"'", '$':'$', '<':'>'}
+" let b:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':"'", '$':'$', '<':'>'}
 
 function! CleanTex()
 	!rm *.log
@@ -53,7 +53,7 @@ function! CleanTex()
 endfunction
 
 " vimtex
-let g:vimtex_compiler_progname = 'nvr'
+" let g:vimtex_compiler_progname = 'nvr'
 let g:tex_conceal='abdmg'
 let g:vimtex_compiler_method='latexmk'
 let g:vimtex_compiler_latexmk = {
@@ -76,16 +76,16 @@ let g:vimtex_compiler_latexmk = {
 let g:vimtex_complete_enabled=1
 let g:vimtex_imaps_enabled=0
 let g:vimtex_indent_enabled=0
-" let g:vimtex_view_method='zathura'
+" let g:vimtex_view_method='general'
 
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-let g:vimtex_view_general_options_latexmk = '--unique'
+" let g:vimtex_view_general_options_latexmk = '--unique'
 
-let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+" let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 " let b:vimtex_main = 'tesisMain.tex'
 let g:vimtex_quickfix_mode=2
-let g:vimtex_grammar_textidote={'jar': '~/.config/nvim/plugged/vimtex/textidote.jar'}
+" let g:vimtex_grammar_textidote={'jar': '~/.config/nvim/plugged/vimtex/textidote.jar'}
 " En Sumatra: "C:\Program Files\Vim\vim82\gvim.exe" --remote-silent +%l %f
 " En arch se debe instalar nvr como pip3 install --user --upgrade
 " neovim-remote y agregar nvr --remote-silent +%l %f en las opciones de editor

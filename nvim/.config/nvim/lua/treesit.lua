@@ -72,7 +72,8 @@ require'nvim-treesitter.configs'.setup {
     --     -- "yaml",
     -- },
     highlight = {
-        enable = true
+        enable = true,
+		disable = {'markdown'},
     },
     indent = {
         enable = false
