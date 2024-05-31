@@ -4,6 +4,7 @@ if not status_ok then
 end
 
 ntree.setup({
+    use_libuv_file_watcher=true,
 	filesystem = {
 		window = {
 			mappings = {

@@ -18,12 +18,18 @@ local rep = extras.rep
 local postfix = require("luasnip.extras.postfix").postfix
 
 local snips =  {
-		s('snip', {
-			t("s('"), i(1), t("', {"),
-			t({'', '    '}), i(2),
-			t({'', '}),'})
-		}),
-	}
+    s('bcomm', {
+        t('{-'),
+        t({'', ''}), i(1),
+        t({'', '-}'})
+    }),
+    s('print', {
+        t('print "'), i(1), t('"')
+    }),
+    s('vprint', {
+        t('print ("'), i(1), t(' = " ++ show '), rep(1), t(')')
+    }),
+}
 
 local autosnips = {
 	}

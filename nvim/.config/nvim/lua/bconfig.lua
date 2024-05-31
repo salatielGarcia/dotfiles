@@ -13,6 +13,7 @@ opt.smarttab = true
 opt.autoindent = true
 opt.tabstop = 4
 opt.softtabstop = -1
+opt.expandtab = true
 opt.shiftwidth = 0
 opt.linebreak = true
 opt.swapfile = false

@@ -85,6 +85,19 @@ lspconfig.marksman.setup{
 }
 
 ----------
+-- Haskell
+----------
+lspconfig.hls.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+	cmd = { "haskell-language-server", "--lsp"},
+	settings = {
+		hls = {
+			filetypes = {'haskell', '*.hs'}
+		}
+	}
+}
+----------
 -- Mason
 ----------
 
