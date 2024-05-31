@@ -56,6 +56,7 @@ require('plugins')
 require('color')
 require('pairs')
 require('surround')
+require('remember')
 require('Comment').setup()
 require('sline')
 -- Telescope

@@ -118,11 +118,13 @@ cmp.setup {
 	-- 	end,
 	-- },
 	sources = {
+		{ name = "mkdnflow" },
+		{ name = "nvim_lua" },
 		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
+		{ name = "texlab" },
 		{ name = "buffer" },
 		{ name = "path" },
-		{ name = "mkdnflow" },
 		{ name = "spell",
 			option = {
 				keep_all_entries = false,

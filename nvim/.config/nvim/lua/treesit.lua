@@ -1,54 +1,10 @@
 -- local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
 
--- if (os.getenv("NEORG_DEV") ~= nil) then
---     parser_configs.norg = {
---         install_info = {
---             url = "~/Git/tree-sitter-norg",
---             files = { "src/parser.c", "src/scanner.cc" },
---         },
---     }
---
---     parser_configs.norg_meta = {
---         install_info = {
---             url = "~/Git/tree-sitter-norg-meta",
---             files = { "src/parser.c" },
---         },
---     }
---
---     parser_configs.norg_table = {
---         install_info = {
---             url = "~/Git/tree-sitter-norg-table",
---             files = { "src/parser.c" },
---         },
---     }
--- else
---     parser_configs.norg = {
---         install_info = {
---             url = "https://github.com/nvim-neorg/tree-sitter-norg",
---             files = { "src/parser.c", "src/scanner.cc" },
---             branch = "main",
---         },
---     }
---
---     parser_configs.norg_meta = {
---         install_info = {
---             url = "https://github.com/nvim-neorg/tree-sitter-norg-meta",
---             files = { "src/parser.c" },
---             branch = "main",
---         },
---     }
---
---     parser_configs.norg_table = {
---         install_info = {
---             url = "https://github.com/nvim-neorg/tree-sitter-norg-table",
---             files = { "src/parser.c" },
---             branch = "main",
---         },
---     }
--- end
---
--- parser_configs.markdown.filetype_to_parsername = "octo"
--- require 'nvim-treesitter.install'.compilers = { "zig" }
+local status_ok, treesit = pcall(require, "nvim-treesitter")
+if not status_ok then
+	print('TS failed')
+    return
+end
 
 -- require'nvim-treesitter.configs'.setup{}
 require'nvim-treesitter.configs'.setup {
@@ -73,7 +29,7 @@ require'nvim-treesitter.configs'.setup {
     -- },
     highlight = {
         enable = true,
-		disable = {'markdown'},
+		disable = {'markdown', 'tex', 'latex'},
     },
     indent = {
         enable = false

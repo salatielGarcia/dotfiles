@@ -11,6 +11,15 @@ _G.ChangeSpell = function()
 		spellChoice = "nil"
 	end
 end
+
+_G.OpenFolder = function()
+    local txt = vim.api.nvim_get_current_line()
+	-- print("Line grabbed: " .. txt)
+	local path = txt:match("%((.-)%)")
+	-- print('Path: ' .. path)
+	cmd('!explorer ' .. path)
+end
+
 map('n', '<F3>', '"=strftime("%d %b %Y %H:%M %p")<CR>p', {noremap=true})
 map('i', '<F3>', '<C-R>=strftime("%d %b %Y %H:%M %p")<CR>', {noremap=true})
 map('n', '<F1>', ':tab h ', {noremap = true})

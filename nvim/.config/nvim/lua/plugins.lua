@@ -1,6 +1,5 @@
 -- Migrate to use Lazy
 
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -25,11 +24,10 @@ require("lazy").setup({
 	'kyazdani42/nvim-web-devicons',
 	'sangdol/mintabline.vim',
 	'numToStr/Comment.nvim',
+	'vladdoster/remember.nvim',
 	'nvim-lua/plenary.nvim',
 	-- Telescope
-	{ 'nvim-telescope/telescope.nvim', tag = '0.1.4',
-		dependencies = { 'nvim-lua/plenary.nvim' }
-	},
+	'nvim-telescope/telescope.nvim',
 	-- Completion
 	'neovim/nvim-lspconfig',
 	'hrsh7th/cmp-nvim-lsp',
@@ -76,4 +74,3 @@ require("lazy").setup({
 	},
 	'voldikss/vim-floaterm'
 })
-
