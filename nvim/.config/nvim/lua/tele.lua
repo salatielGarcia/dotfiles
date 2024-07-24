@@ -11,7 +11,7 @@ local external_open = function (prompt_bufnr)
 	if vim.fn.has('win64') ~= 0 then
 		cmd('!start "" ' .. selected_entry[1])
 	elseif vim.fn.has('linux') ~= 0 then
-		cmd('!xdg-open ' .. selected_entry[1])
+		cmd('!xdg-open ' .. "'" .. selected_entry[1] .. "'")
 	end
 	actions.close(prompt_bufnr)
 end
@@ -53,6 +53,8 @@ map('n', '<Space>co', ':Telescope find_files cwd=' .. initLua .. '<CR>', {norema
 map('n', '<Space>ft', ":Telescope find_files cwd=" .. initLua .. 'ftplugin/<CR>', {noremap=true})
 map('n', '<Space>td', ":Telescope grep_string search=-\\ (\\ )<CR>", {noremap=true})
 map('n', '<Space>ht', ":Telescope help_tags<CR>", {noremap=true})
+map('n', '<Space>hh', ":Telescope find_files cwd=/home/salatiel/<CR>", {noremap=true})
 map('n', '<Space>lg', ":Telescope live_grep<CR>", {noremap=true})
+map('n', '<Space>b', ":Telescope buffers<CR>", {noremap=true})
 
 map('n', '<Space>nt', ":Telescope find_files cwd=~/docs/notes/<CR>", {noremap=true})

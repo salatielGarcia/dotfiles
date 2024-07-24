@@ -29,7 +29,7 @@ require'nvim-treesitter.configs'.setup {
     -- },
     highlight = {
         enable = true,
-		disable = {'markdown', 'tex', 'latex'},
+		disable = {'markdown', 'tex', 'latex', 'vimdoc'},
     },
     indent = {
         enable = false

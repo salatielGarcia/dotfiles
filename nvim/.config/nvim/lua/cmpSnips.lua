@@ -80,27 +80,32 @@ cmp.setup {
 		-- Accept currently selected item. If none selected, `select` first item.
 		-- Set `select` to `false` to only confirm explicitly selected items.
 		["<CR>"] = cmp.mapping.confirm { select = false },
-		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
-			elseif has_words_before() then
-				cmp.complete()
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-		["<S-Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			elseif luasnip.jumpable(-1) then
-				luasnip.jump(-1)
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
+        --
+        ---------------------------------------------------- 	Uncomment to use Tab
+	-- 	["<Tab>"] = cmp.mapping(function(fallback)
+	-- 		if cmp.visible() then
+	-- 			cmp.select_next_item()
+	-- 		elseif luasnip.expand_or_jumpable() then
+	-- 			luasnip.expand_or_jump()
+	-- 		elseif has_words_before() then
+	-- 			cmp.complete()
+	-- 		else
+	-- 			fallback()
+	-- 		end
+	-- 	end, { "i", "s" }),
+	-- 	["<S-Tab>"] = cmp.mapping(function(fallback)
+	-- 		if cmp.visible() then
+	-- 			cmp.select_prev_item()
+	-- 		elseif luasnip.jumpable(-1) then
+	-- 			luasnip.jump(-1)
+	-- 		else
+	-- 			fallback()
+	-- 		end
+	-- 	end, { "i", "s" }),
+    -----------------------------------------------------------------Until here
 	},
+    --
+    --
 	-- formatting = {
 	-- 	fields = { "kind", "abbr", "menu" },
 	-- 	format = function(entry, vim_item)
@@ -168,6 +173,17 @@ cmp.setup.cmdline(':', {
 	})
 })
 
+map({'i', 's'}, '<C-k>', function ()
+    if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+    end
+end, {silent = true})
+
+map({'i', 's'}, '<C-j>', function ()
+    if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump(-1)
+    end
+end, {silent = true})
   -- Set up lspconfig.
   -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
   -- -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.

@@ -18,10 +18,17 @@ local rep = extras.rep
 local postfix = require("luasnip.extras.postfix").postfix
 
 local snips =  {
-    s('snip', {
-        t("s('"), i(1), t("', {"),
-        t({'', '    '}), i(2),
-        t({'', '}),'}),
+    s('article', {
+        t('@article{'), i(1), t(','),
+        t({'', '    author = ""'}),
+        t({'', '    title = ""'}),
+        t({'', '    journal = ""'}),
+        t({'', '    volume = ""'}),
+        t({'', '    number = ""'}),
+        t({'', '    pages = ""'}),
+        t({'', '    year = ""'}),
+        t({'', '    DOI = ""'}),
+        t({'', '}'}),
     }),
 }
 

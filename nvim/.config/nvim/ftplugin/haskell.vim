@@ -1,4 +1,4 @@
-set makeprg=ghc\ -dynamic\ %
+set makeprg=ghc\ %
 
 " nnoremap <buffer> <Leader>hh :!ghc -dynamic %<CR>
 nnoremap <buffer> <Leader>hh :make<CR>

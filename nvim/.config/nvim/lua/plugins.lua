@@ -54,7 +54,7 @@ require("lazy").setup({
 	-- -- Latex
 	'lervag/vimtex',
 	-- -- Startup
-	'startup-nvim/startup.nvim',
+	-- 'startup-nvim/startup.nvim',
 	-- -- Neotree
 	{"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",

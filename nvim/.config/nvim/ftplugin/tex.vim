@@ -53,7 +53,7 @@ function! CleanTex()
 endfunction
 
 " vimtex
-" let g:vimtex_compiler_progname = 'nvr'
+let g:vimtex_compiler_progname = 'nvr'
 let g:tex_conceal='abdmg'
 let g:vimtex_compiler_method='latexmk'
 let g:vimtex_compiler_latexmk = {
@@ -79,10 +79,10 @@ let g:vimtex_indent_enabled=0
 " let g:vimtex_view_method='general'
 
 let g:vimtex_view_general_viewer = 'okular'
-let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+" let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 " let g:vimtex_view_general_options_latexmk = '--unique'
 
-" let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 " let b:vimtex_main = 'tesisMain.tex'
 let g:vimtex_quickfix_mode=2
 " let g:vimtex_grammar_textidote={'jar': '~/.config/nvim/plugged/vimtex/textidote.jar'}

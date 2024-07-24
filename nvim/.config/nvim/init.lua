@@ -34,7 +34,7 @@ _G.cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
 function _G.map(mode, lhs, rhs, opts)
 	local options = {noremap = true}
 	if opts then options = vim.tbl_extend('force', options, opts) end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+	vim.keymap.set(mode, lhs, rhs, options)
 end
 
 if vim.g.neovide then
@@ -72,7 +72,7 @@ require('notes')
 require('tree')
 require('neogit').setup() -- Do not add args {}, clears config
 
-require('startup').setup() -- Do not add args {}, clears config
+-- require('startup').setup() -- Do not add args {}, clears config
 require('floaterm')
 -- if syst ~= 'Linux' then
 -- 	print('not exe')

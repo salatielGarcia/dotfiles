@@ -90,17 +90,31 @@ lspconfig.marksman.setup{
 lspconfig.hls.setup{
     on_attach = on_attach,
     flags = lsp_flags,
-	cmd = { "haskell-language-server", "--lsp"},
+	cmd = { "haskell-language-server-9.4.8", "--lsp"},
 	settings = {
 		hls = {
 			filetypes = {'haskell', '*.hs'}
 		}
 	}
 }
+
+----------
+-- Haskell
+----------
+lspconfig.texlab.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+	cmd = {'texlab'},
+	settings = {
+        texlab = {
+            filetypes = {'tex', 'bib'}
+        }
+	}
+}
+
 ----------
 -- Mason
 ----------
-
 mason.setup({
     ui = {
         icons = {
